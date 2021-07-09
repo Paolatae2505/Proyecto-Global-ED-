@@ -3,12 +3,13 @@ import java.util.*;
 
 public class Busqueda {
 
-    //// MÉTODOS ///
+    public Stack<String> historial = new Stack<>();
 
     public void compara(List<File> docs, String consulta) {
+        historial.push(consulta);
         /*Se crea arbol rojinegro que contiene al documento como valor
          * y a sim como key */
-        Map<Double, File> simPorDoc = new TreeMap<Double, File>();
+        Map<Double, File> simPorDoc = new TreeMap<>();
         for (File doc : docs) {
             simPorDoc.put(new TFIDF().sim(docs, consulta, doc), doc);
         }
@@ -26,7 +27,9 @@ public class Busqueda {
         }
     }
 
-    //**HISTORIAL(VIC)*/
+    public void imprimirHistorial(){
+        historial.forEach(System.out::println);
+    }
 
     ///**CACHÉ (PAO)*/
 

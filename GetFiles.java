@@ -9,13 +9,13 @@ public class GetFiles {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         Scanner in = new Scanner(System.in);
-        boolean op = false;
-        String path = "";
-        boolean exit = false;
-        int choose = 0;
         String consulta = "";
-        int len = 0;
+        String path = "";
+        boolean op = false;
+        boolean exit = false;
         boolean allow = false;
+        int choose = 0;
+        int len = 0;
         List<File> docs = new ArrayList<>();
         File dir = null;
         while (exit == false) {
@@ -54,7 +54,7 @@ public class GetFiles {
                 choose = in.nextInt();
                 switch (choose) {
                     case 1:
-                        System.out.println("Digite su busqueda : ");
+                        System.out.println("Digite su busqueda: ");
                         consulta = entrada.nextLine();
                         len = consulta.length();
                         while (len > 200) {
@@ -63,16 +63,16 @@ public class GetFiles {
                             consulta = entrada.nextLine();
                             len = consulta.length();
                         }
-                        //realizar consulta
-
+                        new Busqueda().compara(docs, consulta);
                         break;
 
                     case 2:
-
+                        new Busqueda().imprimirHistorial();
                         break;
 
                     case 3:
-                        exit = true;
+                        exit = false;
+                        System.out.println("Adios!");
                         break;
 
                     default:
@@ -80,10 +80,7 @@ public class GetFiles {
                         System.err.println("Vuelve a intentarlo");
                         break;
                 }
-
             }
-
         }
-
     }
 }
