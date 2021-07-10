@@ -22,7 +22,7 @@ public class GetFiles{
          path = entrada.nextLine();
          dir = new File(path);
          if(dir.isDirectory() && dir.exists())
-         allow = true;
+         allow = true;   /// Aqui se agrego algo ojo  Ve la foto de VIC BORRA ESTO ANTES DEL PULL OJOOOOO
          System.out.println("Su directorio no existe ");
          }
          ///// FILTRO PARA SOLO PASAR ARCHIVOS Y CON EXTENCIÓN TXT/////////
