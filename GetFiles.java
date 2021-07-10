@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import org.apache.commons.io.FileUtils;
 
 public class GetFiles {
 
@@ -28,12 +27,7 @@ public class GetFiles {
                 while (allow == false) {
                     System.out.println("Digite la ruta del directorio :");
                     path = entrada.nextLine();
-                       if (isSystemWindows()) {
-                         pathWalk =  separatorsToWindows(path);
-                       } else {
-                         pathWalk = separatorsToUnix(path);
-                       }
-                    dir = new File(pathWalk);
+                    dir = new File(path);
                     if (dir.isDirectory() && dir.exists()) {
                         allow = true;
                     }else{

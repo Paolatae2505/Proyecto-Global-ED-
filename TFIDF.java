@@ -22,7 +22,7 @@ public class TFIDF {
      * @param documento COMO TAL UN DOC
      * @return
      */  // Maximo el jueves
-    public static int f(String termino, File documento) throws IOException {
+    private int f(String termino, File documento) throws IOException {
         String[] words = null;  //Intialize the word Array
         FileReader fr = new FileReader(documento);  //Creation of File Reader object
         BufferedReader br = new BufferedReader(fr); //Creation of BufferedReader object
@@ -49,7 +49,7 @@ public class TFIDF {
      * @param d
      * @return
      */
-    public double TF(String termino, File d) {
+    private double TF(String termino, File d) {
         double resultado = 0;
         int frecuencia = 0;
         try {
@@ -73,14 +73,14 @@ public class TFIDF {
      * @param termino
      * @return
      */
-    public double IDF(String termino, List<File> docs) {
+    private double IDF(String termino, List<File> docs) {
         double frecuencia = 0;
         int counter = 0;
         double resultado = 0;
         for (File doc : docs) {
             try {
                 frecuencia = f(termino, doc);
-            } catch (IOException exp) {
+            }catch (IOException exp){
                 System.out.println(exp.getMessage());
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
@@ -98,7 +98,7 @@ public class TFIDF {
         return resultado;
     }
 
-    public double TF_IDF(double tf, double idf) {
+    private double TF_IDF(double tf, double idf) {
         return tf * idf;
     }
 
@@ -112,20 +112,24 @@ public class TFIDF {
      * @return
      */
     public double sim(List<File> d, String consulta, File doc) {
-        String[] terminos = consulta.split("\"\\\\s+|,\\\\s*|\\\\.\\\\s*\"");
+        String[] terminos = consulta.split(" ");
         double tf, idf, tfIdf;
         double dividendo = 0;
         double divisor = 0;
         for (String termino : terminos) {
-            idf = IDF(termino, d);
             tf = TF(termino, doc);
-            tfIdf = TF_IDF(tf, idf);
-            dividendo += tfIdf;
-            divisor += Math.pow(tfIdf, 2);
+            idf = IDF(termino,d);
+            if(idf != 0 && tf != 0 || idf == 0 && tf != 0){
+                tfIdf = TF_IDF(tf,idf);
+                dividendo = dividendo + tfIdf;
+                divisor  = divisor + Math.pow(tfIdf, 2);
+            }
         }
         if (divisor != 0.0) {
             return dividendo / Math.sqrt(divisor);
-        } else return 0;
+        } else{
+          return 0;
+        } 
     }
 }
 
