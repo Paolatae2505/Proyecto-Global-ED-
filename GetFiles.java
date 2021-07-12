@@ -1,9 +1,6 @@
 import java.io.File;
 import java.io.FilenameFilter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class GetFiles {
@@ -20,6 +17,7 @@ public class GetFiles {
         boolean allow = false;
         int choose = 0;
         int len = 0;
+        Stack<String> historial = new Stack<>();
         Map<String, List<String>> cache = new HashMap<>();
         List<File> docs = new ArrayList<>();
         File dir = null;
@@ -71,9 +69,16 @@ public class GetFiles {
                             consulta = entrada.nextLine();
                             len = consulta.length();
                         }
-                        new Busqueda().realizarBusqueda(docs, consulta);
+                        historial.push(consulta);
+                        List<String> resultados = new Busqueda().compara(docs, consulta);
+                        for (String resultado : resultados) {
+                            System.out.println(resultado);
+                        }
                         break;
                     case 2:
+                        for (String s : historial) {
+                            System.out.println(s);
+                        }
                         break;
 
                     case 3:

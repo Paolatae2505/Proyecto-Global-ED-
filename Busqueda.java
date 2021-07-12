@@ -4,14 +4,7 @@ import java.util.Map.Entry;
 
 public class Busqueda {
 
-    public void realizarBusqueda(List<File> docs, String consulta) {
-        List<String> resultados = compara(docs, consulta);
-        for (String resultado : resultados) {
-            System.out.println(resultado);
-        }
-    }
-
-    private List<String> compara(List<File> docs, String consulta) {
+    public List<String> compara(List<File> docs, String consulta) {
         List<String> resultado = new ArrayList<>();
         double sim;
         /*Se crea mapa con key = nombre de archivo, value = sim */
@@ -43,9 +36,9 @@ public class Busqueda {
     }
 
 
-    public List<String> containsCache (Map<String,List<String>> d){
+    public List<String> containsCache(Map<String, List<String>> d) {
         return null;
-              
+
 
     }
 
