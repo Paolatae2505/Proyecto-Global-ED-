@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+
 public class GetFiles {
 
     public static void main(String[] args) {
@@ -19,6 +20,7 @@ public class GetFiles {
         boolean allow = false;
         int choose = 0;
         int len = 0;
+        Map<String, List<String>> cache = new HashMap<>();
         List<File> docs = new ArrayList<>();
         File dir = null;
         String palabra = "";

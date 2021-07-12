@@ -43,6 +43,10 @@ public class Busqueda {
     }
 
 
-    ///**CACHÉ (PAO)*/
+    public List<String> containsCache (Map<String,List<String>> d){
+        return null;
+              
+
+    }
 
 }
