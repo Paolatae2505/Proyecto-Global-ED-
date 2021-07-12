@@ -32,7 +32,7 @@ public class GetFiles {
                     dir = new File(path);
                     if (dir.isDirectory() && dir.exists()) {
                         allow = true;
-                    }else{
+                    } else {
                         allow = false;
                         System.out.println("Su directorio no existe ");
                     }
@@ -45,7 +45,7 @@ public class GetFiles {
                 });
                 docs = Arrays.asList(listFiles);
                 op = true;
-            }else if (op == true){
+            } else if (op == true) {
                 System.out.println("-----------BIENVENID@-------------");
                 System.out.println("--------------MENÚ----------------");
                 System.out.println("1.Buscar -------------------------");
@@ -69,10 +69,9 @@ public class GetFiles {
                             consulta = entrada.nextLine();
                             len = consulta.length();
                         }
-                        new Busqueda().compara(docs, consulta);
+                        new Busqueda().realizarBusqueda(docs, consulta);
                         break;
                     case 2:
-                        new Busqueda().imprimirHistorial();
                         break;
 
                     case 3:
@@ -87,5 +86,5 @@ public class GetFiles {
             } /// else if
         }
     }
-  }
-    
+}
+

@@ -1,32 +1,47 @@
 import java.io.File;
 import java.util.*;
+import java.util.Map.Entry;
 
 public class Busqueda {
-    public Stack<String> historial = new Stack<>();
 
-    public void compara(List<File> docs, String consulta) {
-        historial.push(consulta);
-        /*Se crea arbol rojinegro que contiene al documento como valor
-         * y a sim como key */
-        Map<Double, File> simPorDoc = new TreeMap<>();
+    public void realizarBusqueda(List<File> docs, String consulta) {
+        List<String> resultados = compara(docs, consulta);
+        for (String resultado : resultados) {
+            System.out.println(resultado);
+        }
+    }
+
+    private List<String> compara(List<File> docs, String consulta) {
+        List<String> resultado = new ArrayList<>();
+        double sim;
+        /*Se crea mapa con key = nombre de archivo, value = sim */
+        Map<String, Double> simPorDoc = new Hashtable<>();
         for (File doc : docs) {
-            simPorDoc.put(new TFIDF().sim(docs, consulta, doc), doc);
+            sim = new TFIDF().sim(docs, consulta, doc);
+            if (sim != 0) {
+                simPorDoc.put(doc.getName(), sim);
+            }
         }
-        /*Obtengo el arbol de reversa para imprimir los 10 con el
-         * sim más alto*/
-        Set set = simPorDoc.entrySet();
-        Iterator iterator = ((Set) set).iterator();
-        // Imprimir elementos en reversa
-        int i = 0;
-        while (iterator.hasNext() && i < 10) {
-            Map.Entry em = (Map.Entry) iterator.next();
-            System.out.println(em.getValue());
-            i++;
+
+        if (simPorDoc.isEmpty()) {
+            resultado.add("No hay coincidencias.");
+        } else {
+            //Regresar los valores más altos de sim en el árbol (max 10)
+            Set<Entry<String, Double>> entradas = simPorDoc.entrySet();
+            List<Entry<String, Double>> list = new ArrayList<>(entradas);
+            list.sort(Entry.<String, Double>comparingByValue().reversed());
+
+            int i = 0;
+            for (Entry<String, Double> e : list) {
+                if (i < 10) {
+                    resultado.add(e.getKey());
+                    i++;
+                }
+            }
         }
+        return resultado;
     }
-    public void imprimirHistorial(){
-        historial.forEach(System.out::println);
-    }
+
 
     ///**CACHÉ (PAO)*/
 
