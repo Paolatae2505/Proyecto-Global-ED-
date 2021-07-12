@@ -10,6 +10,8 @@ public class GetFiles {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         Scanner in = new Scanner(System.in);
+        TFIDF buscador = new TFIDF();
+        double res = 0;
         String consulta = "";
         String path = "";
         boolean op = false;

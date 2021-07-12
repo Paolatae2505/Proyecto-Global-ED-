@@ -75,8 +75,9 @@ public class TFIDF {
      */
     private double IDF(String termino, List<File> docs) {
         double frecuencia = 0;
-        int counter = 0;
+        double counter = 0;
         double resultado = 0;
+        double div = 0;
         for (File doc : docs) {
             try {
                 frecuencia = f(termino, doc);
@@ -93,7 +94,8 @@ public class TFIDF {
             resultado = 0;
         } else {
             int n = docs.size();
-            resultado = ((Math.log10(n / counter)) / (Math.log10(2)));
+            div = (n / counter);
+            resultado = ((Math.log10(div)) / (Math.log10(2)));
         }
         return resultado;
     }
@@ -113,23 +115,28 @@ public class TFIDF {
      */
     public double sim(List<File> d, String consulta, File doc) {
         String[] terminos = consulta.split(" ");
-        double tf, idf, tfIdf;
+        double tf = 0; 
+        double idf = 0;
+        double tfIdf = 0;
         double dividendo = 0;
         double divisor = 0;
+        double resu = 0;
+        double root = 0;
         for (String termino : terminos) {
             tf = TF(termino, doc);
             idf = IDF(termino,d);
             if(idf != 0 && tf != 0 || idf == 0 && tf != 0){
                 tfIdf = TF_IDF(tf,idf);
                 dividendo = dividendo + tfIdf;
-                divisor  = divisor + Math.pow(tfIdf, 2);
+                divisor  = divisor + (tfIdf * tfIdf) ;
+            }else{
+                return 0;
             }
         }
-        if (divisor != 0.0) {
-            return dividendo / Math.sqrt(divisor);
-        } else{
-          return 0;
-        } 
+            root = Math.sqrt(divisor);
+            resu = ((dividendo) / (root));
+            return resu;
+     
     }
 }
 
