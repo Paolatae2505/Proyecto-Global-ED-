@@ -31,15 +31,20 @@ public class Busqueda {
                     i++;
                 }
             }
-        }
+        }   
         return resultado;
     }
-
-
-    public List<String> containsCache(Map<String, List<String>> d) {
-        return null;
-
-
+    public List<String> containsCache(Map<String, List<String>> d, String consulta) {
+        String key = "";
+         if(d.containsKey(consulta) == true){
+            for(Map.Entry<String,List<String>> entry : d.entrySet()) {
+                key = entry.getKey();
+                if(key.equals(consulta)){
+                    return d.get(consulta);
+                }
+            }   
+         }
+         return null;
     }
 
 }

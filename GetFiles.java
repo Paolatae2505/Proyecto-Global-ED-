@@ -8,7 +8,6 @@ public class GetFiles {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         Scanner in = new Scanner(System.in);
-        TFIDF buscador = new TFIDF();
         double res = 0;
         String consulta = "";
         String path = "";
@@ -20,15 +19,15 @@ public class GetFiles {
         Stack<String> historial = new Stack<>();
         Map<String, List<String>> cache = new HashMap<>();
         List<File> docs = new ArrayList<>();
+        List<String> resultados = new ArrayList<>();
         File dir = null;
-        String palabra = "";
-        String pathWalk = "";
         while (exit == false) {
             if (op == false) {
                 //// VERIFICA SI EXISTE LA RUTA Y EL DIRECTORIO////////
                 while (allow == false) {
                     System.out.println("Digite la ruta del directorio :");
                     path = entrada.nextLine();
+                    path = path.trim();
                     dir = new File(path);
                     if (dir.isDirectory() && dir.exists()) {
                         allow = true;
@@ -47,11 +46,12 @@ public class GetFiles {
                 op = true;
             } else if (op == true) {
                 System.out.println("-----------BIENVENID@-------------");
-                System.out.println("--------------MENÚ----------------");
+                System.out.println("-------------NEFILIM--------------");
+                System.out.println("--------------MENÚ---------------");
                 System.out.println("1.Buscar -------------------------");
                 System.out.println("2.Consultar Historial-------------");
                 System.out.println("3.Salir---------------------------");
-                System.out.println("Elija una opción -----------------");
+                System.out.println("Elija una opción ----------------");
                 System.out.println("----------------------------------");
                 while (!in.hasNextInt()) {  /// SOLO PASE NUMEROS Y NO CADENAS
                     System.out.println("<Da un Numero>");
@@ -70,9 +70,25 @@ public class GetFiles {
                             len = consulta.length();
                         }
                         historial.push(consulta);
-                        List<String> resultados = new Busqueda().compara(docs, consulta);
-                        for (String resultado : resultados) {
-                            System.out.println(resultado);
+                        if(cache.isEmpty() == true){
+                            resultados = new Busqueda().compara(docs, consulta);
+                            for (String resultado : resultados) {
+                                System.out.println(resultado);
+                            }
+                            cache.put(consulta,resultados);
+                        }else{
+                        resultados = new Busqueda().containsCache(cache, consulta);
+                        if(resultados == null){
+                            resultados = new Busqueda().compara(docs, consulta);
+                            for (String resultado : resultados) {
+                                System.out.println(resultado);
+                            }
+                            cache.put(consulta,resultados);
+                        }else{
+                            for (String resultado : resultados) {
+                                System.out.println(resultado);
+                            } 
+                        }
                         }
                         break;
                     case 2:
