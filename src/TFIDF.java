@@ -93,7 +93,7 @@ public class TFIDF {
         if (counter == 0) {
             resultado = 0;
         } else {
-            int n = docs.size();
+            int n = docs.size() + 1;
             div = (n / counter);
             resultado = ((Math.log10(div)) / (Math.log10(2)));
         }
