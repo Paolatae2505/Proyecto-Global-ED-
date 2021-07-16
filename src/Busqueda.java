@@ -35,6 +35,19 @@ public class Busqueda {
         return resultado;
     }
 
+    public void imprimeHistorial(Stack<String> historial) {
+        Stack<String> imprimirHistorial = new Stack<String>();
+        String s;
+        while (!historial.isEmpty()) {
+            s = historial.pop();
+            imprimirHistorial.push(s);
+        }
+
+        for (String h : imprimirHistorial) {
+            System.out.println(h);
+        }
+    }
+
     public List<String> containsCache(Map<String, List<String>> d, String consulta) {
         String key = "";
         if (d.containsKey(consulta)) {

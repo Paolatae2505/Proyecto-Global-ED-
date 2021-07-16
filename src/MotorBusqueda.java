@@ -4,7 +4,7 @@ import java.util.*;
 
 public class MotorBusqueda {
 
-    public static void menu(){
+    public static void menu() {
         System.out.println(" ");
         System.out.println(" ");
         System.out.println("-----------BIENVENID@-------------");
@@ -18,7 +18,7 @@ public class MotorBusqueda {
         System.out.println(" ");
     }
 
-    public static List<File> getFiles(Scanner entrada){
+    public static List<File> getFiles(Scanner entrada) {
         String path;
         File directorio = null;
         boolean allow = false;
@@ -103,9 +103,8 @@ public class MotorBusqueda {
                         }
                         break;
                     case 2:
-                        for (String s : historial) {
-                            System.out.println(s);
-                        }
+                        System.out.println("Historial:");
+                        new Busqueda().imprimeHistorial(historial);
                         break;
 
                     case 3:
