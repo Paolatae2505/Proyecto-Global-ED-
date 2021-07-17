@@ -9,11 +9,18 @@ public class Busqueda {
         double sim;
         /*Se crea mapa con key = nombre de archivo, value = sim */
         Map<String, Double> simPorDoc = new Hashtable<>();
+        int j = 1;
+        double r = docs.size();
+        double porcentaje;
         for (File doc : docs) {
+            porcentaje = (j/r)*100;
             sim = new TFIDF().sim(docs, consulta, doc);
+            System.out.printf("----- Progreso : %.2f", porcentaje); 
+            System.out.println("%-----");
             if (sim != 0) {
                 simPorDoc.put(doc.getName(), sim);
             }
+            j ++;
         }
 
         if (simPorDoc.isEmpty()) {

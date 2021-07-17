@@ -82,6 +82,8 @@ public class MotorBusqueda {
                         }
                         historial.push(consulta);
                         if (cache.isEmpty()) {
+                            System.out.println(" ");
+                            System.out.println("Resultados : ");
                             resultados = new Busqueda().compara(docs, consulta);
                             for (String resultado : resultados) {
                                 System.out.println(resultado);
@@ -90,12 +92,16 @@ public class MotorBusqueda {
                         } else {
                             resultados = new Busqueda().containsCache(cache, consulta);
                             if (resultados == null) {
+                                System.out.println(" ");
+                                System.out.println("Resultados : ");
                                 resultados = new Busqueda().compara(docs, consulta);
                                 for (String resultado : resultados) {
                                     System.out.println(resultado);
                                 }
                                 cache.put(consulta, resultados);
                             } else {
+                                System.out.println(" ");
+                                System.out.println("Resultados : ");
                                 for (String resultado : resultados) {
                                     System.out.println(resultado);
                                 }
