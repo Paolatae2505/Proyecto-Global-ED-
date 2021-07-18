@@ -3,37 +3,36 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
+/**
+ * Implementacion Clase para calcular el TF e IDF
+ * @author Baron Herrera Victoria
+ * @author Vargas Bravo Paola
+ * @version 1.0 (17 de Julio 2021)
+ * @since Estructuras de datos 2021-2.
+ */
 
 public class TFIDF {
-    // DOS METODOS
-    /**
-     * Calcular el TF
-     * Calcular el IDF
-     * Calcula la frecuencia de los terminos f(t,d)
-     * Calcule todo el final
-     * Pase cada palabra de un String a una lista esta lista la resivira f
-     */
+ 
     // Metodos
 
     /**
      * Busca la frenceuncia de la palabra en un documento
-     *
-     * @param termino
-     * @param documento COMO TAL UN DOC
+     * @param termino --- Termino a busar en el documento 
+     * @param documento --- Documento para buscar termino
      * @return
-     */  // Maximo el jueves
+     */  
     private int f(String termino, File documento) throws IOException {
-        String[] words = null;  //Intialize the word Array
-        FileReader fr = new FileReader(documento);  //Creation of File Reader object
-        BufferedReader br = new BufferedReader(fr); //Creation of BufferedReader object
+        String[] words = null;  
+        FileReader fr = new FileReader(documento);  
+        BufferedReader br = new BufferedReader(fr);
         int count = 0;
         String s = "";
         termino = termino.replaceAll("\\W+", "");
         while ((s = br.readLine()) != null) {
             words = s.split(" ");
             for (String word : words) {
-                word = word.replaceAll("\\W+", "");
-                if (word.equalsIgnoreCase(termino)) { // quita las minusculas y mayusculas
+                word = word.replaceAll("\\W+", "");// Quita los caracteres especiales
+                if (word.equalsIgnoreCase(termino)) { // Quita las minusculas y mayusculas
                     count++;
                 }
             }
@@ -43,10 +42,9 @@ public class TFIDF {
     }
 
     /**
-     * Calcula el TF de la palabra en cada documento (INDIVIDUAL)
-     *
-     * @param termino
-     * @param doc
+     * Calcula el TF de la palabra en un Documento
+     * @param termino --- Temrino en el documento
+     * @param doc ------- Documento
      * @return
      */
     private double TF(String termino, File doc) {
@@ -68,10 +66,10 @@ public class TFIDF {
     }
 
     /**
-     * Calcula el IDF de la plabra en todos los documentos (Global)
-     *
-     * @param termino
-     * @return
+     * Calcula el IDF de la Palabra en todos los documentos
+     * @param termino --- Termino a buscar
+     * @param docs --- Lista de documentos
+     * @return resultado IDF
      */
     private double IDF(String termino, List<File> docs) {
         double frecuencia = 0;
@@ -100,11 +98,18 @@ public class TFIDF {
         return resultado;
     }
 
+    /**
+     * Calcula la multiplicacion del TF e IDF
+     * @param tf --- resultado de tf
+     * @param idf ---- resultado de idf 
+     * @return multiplicacion de tf e idf 
+     */
+
     private double TF_IDF(double tf, double idf) {
         return tf * idf;
     }
 
-    /**
+    /** /// AUN NO DOCUMENTADO 
      * ENTONCES PARA OBTENER CADA SIMP TIENES QUE IR ITERANDO EN
      * EL METODO COMPARAR ESTE SIMP CON LA LISTA.
      * ESTE METODO CALCULA SOLO EL SIMP DE CADA DOCUMENTO

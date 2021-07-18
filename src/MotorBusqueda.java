@@ -1,6 +1,15 @@
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.*;
+import java.io.*;
+/**
+ * Implementacion Main Motor de Busqueda 
+ * @author Baron Herrera Victoria
+ * @author Vargas Bravo Paola
+ * @version 1.0 (17 de Julio 2021)
+ * @since Estructuras de datos 2021-2.
+ * @see Busqueda clase busqueda de palabras
+ */
 
 public class MotorBusqueda {
 
@@ -9,11 +18,11 @@ public class MotorBusqueda {
         System.out.println(" ");
         System.out.println("-----------BIENVENID@-------------");
         System.out.println("-------------NEFILIM--------------");
-        System.out.println("--------------MENÚ----------------");
+        System.out.println("--------------MENÚ---------------");
         System.out.println("1.Buscar -------------------------");
         System.out.println("2.Consultar Historial-------------");
         System.out.println("3.Salir---------------------------");
-        System.out.println("Elija una opción -----------------");
+        System.out.println("Elija una opción ----------------");
         System.out.println("----------------------------------");
         System.out.println(" ");
     }
@@ -50,6 +59,7 @@ public class MotorBusqueda {
         Scanner entrada = new Scanner(System.in);
         Scanner in = new Scanner(System.in);
         String consulta;
+        String subPattern = "";
         boolean iniciar = false;
         boolean isRunning = true;
         int choose;
@@ -77,14 +87,16 @@ public class MotorBusqueda {
                         while (len > 200) {
                             System.out.println("Tu busqueda excede 200 palabras");
                             System.out.println("Ingrese su busqueda :");
-                            consulta = entrada.nextLine();
+                            consulta= entrada.nextLine();
                             len = consulta.length();
                         }
                         historial.push(consulta);
                         if (cache.isEmpty()) {
                             System.out.println(" ");
-                            System.out.println("Resultados : ");
                             resultados = new Busqueda().compara(docs, consulta);
+                            System.out.println(" ");
+                            System.out.println("Resultados : ");
+                            System.out.println(" ");
                             for (String resultado : resultados) {
                                 System.out.println(resultado);
                             }
@@ -93,8 +105,10 @@ public class MotorBusqueda {
                             resultados = new Busqueda().containsCache(cache, consulta);
                             if (resultados == null) {
                                 System.out.println(" ");
-                                System.out.println("Resultados : ");
                                 resultados = new Busqueda().compara(docs, consulta);
+                                System.out.println(" ");
+                                System.out.println("Resultados : ");
+                                System.out.println(" ");
                                 for (String resultado : resultados) {
                                     System.out.println(resultado);
                                 }
@@ -102,6 +116,7 @@ public class MotorBusqueda {
                             } else {
                                 System.out.println(" ");
                                 System.out.println("Resultados : ");
+                                System.out.println(" ");
                                 for (String resultado : resultados) {
                                     System.out.println(resultado);
                                 }

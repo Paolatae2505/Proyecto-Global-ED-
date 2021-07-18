@@ -1,8 +1,15 @@
 import java.io.File;
 import java.util.*;
 import java.util.Map.Entry;
+/**
+ * Implementacion Clase busqueda de palabra
+ * @author Baron Herrera Victoria
+ * @author Vargas Bravo Paola
+ * @version 1.0 (17 de Julio 2021)
+ * @since Estructuras de datos 2021-2.
+ */
 
-public class Busqueda {
+public class Busqueda{
 
     public List<String> compara(List<File> docs, String consulta) {
         List<String> resultado = new ArrayList<>();
@@ -45,6 +52,7 @@ public class Busqueda {
     public void imprimeHistorial(Stack<String> historial) {
         Stack<String> imprimirHistorial = new Stack<String>();
         String s;
+  
         while (!historial.isEmpty()) {
             s = historial.pop();
             imprimirHistorial.push(s);
@@ -54,7 +62,12 @@ public class Busqueda {
             System.out.println(h);
         }
     }
-
+    /**
+     * Busca si una palabra esta en el cache
+     * @param d --- Cache con los termino y resultados
+     * @param consulta -- Palabra a buscar
+     * @return Resultados de busqueda de la Palabra
+     */
     public List<String> containsCache(Map<String, List<String>> d, String consulta) {
         String key = "";
         if (d.containsKey(consulta)) {
