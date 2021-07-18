@@ -10,7 +10,6 @@ import java.util.List;
  * @version 1.0 (17 de Julio 2021)
  * @since Estructuras de datos 2021-2.
  */
-
 public class TFIDF {
  
     // Metodos
@@ -109,14 +108,11 @@ public class TFIDF {
         return tf * idf;
     }
 
-    /** /// AUN NO DOCUMENTADO 
-     * ENTONCES PARA OBTENER CADA SIMP TIENES QUE IR ITERANDO EN
-     * EL METODO COMPARAR ESTE SIMP CON LA LISTA.
-     * ESTE METODO CALCULA SOLO EL SIMP DE CADA DOCUMENTO
-     *
-     * @param d        para obtener la longuitud de la lista en d no por que itere en la lista d.
-     * @param consulta recibe la consulta para separarla en terminos
-     * @param doc      documento en el que se buscará el termino correspondiente
+    /** 
+     * Calcula el Sim de una palabra en un documento 
+     * @param d --- Lista de documentos
+     * @param consulta --- Consulta en documento
+     * @param doc --- Documento a obtener sim
      * @return
      */
     public double sim(List<File> d, String consulta, File doc) {
