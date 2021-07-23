@@ -14,7 +14,7 @@ import java.util.Map.Entry;
 public class Busqueda {
 
     /**
-     * Busca si una palabra esta en el cache
+     * Busca los documentos con más alta coincidencia
      *
      * @param docs     --Lista de documentos
      * @param consulta -- Palabra a buscar
