@@ -1,14 +1,15 @@
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.*;
-import java.io.*;
+
 /**
- * Implementacion Main Motor de Busqueda 
+ * Implementacion Main Motor de Busqueda
+ *
  * @author Baron Herrera Victoria
  * @author Vargas Bravo Paola
  * @version 1.0 (17 de Julio 2021)
- * @since Estructuras de datos 2021-2.
  * @see Busqueda clase busqueda de palabras
+ * @since Estructuras de datos 2021-2.
  */
 
 public class MotorBusqueda {
@@ -51,10 +52,12 @@ public class MotorBusqueda {
         return Arrays.asList(listFiles);
     }
 
+
     public static void main(String[] args) {
         List<File> docs = new ArrayList<>();
         List<String> resultados;
-        Stack<String> historial = new Stack<>();
+        List<String> historial = new ArrayList<>();
+        //Stack<String> historial = new Stack<>();
         Map<String, List<String>> cache = new HashMap<>();
         Scanner entrada = new Scanner(System.in);
         Scanner in = new Scanner(System.in);
@@ -76,7 +79,7 @@ public class MotorBusqueda {
                 menu();
                 while (!in.hasNextInt()) {
                     System.out.println("<Da un Numero>");
-                    in.nextLine();
+                    in.next();
                 }
                 choose = in.nextInt();
                 switch (choose) {
@@ -87,10 +90,10 @@ public class MotorBusqueda {
                         while (len > 200) {
                             System.out.println("Tu busqueda excede 200 palabras");
                             System.out.println("Ingrese su busqueda :");
-                            consulta= entrada.nextLine();
+                            consulta = entrada.nextLine();
                             len = consulta.length();
                         }
-                        historial.push(consulta);
+                        historial.add(0, consulta);
                         if (cache.isEmpty()) {
                             System.out.println(" ");
                             resultados = new Busqueda().compara(docs, consulta);
@@ -125,7 +128,9 @@ public class MotorBusqueda {
                         break;
                     case 2:
                         System.out.println("Historial:");
-                        new Busqueda().imprimeHistorial(historial);
+                        for (String h : historial) {
+                            System.out.println(h);
+                        }
                         break;
 
                     case 3:
