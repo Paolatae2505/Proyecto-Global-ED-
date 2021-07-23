@@ -13,7 +13,7 @@ import java.util.*;
  */
 
 public class MotorBusqueda {
-
+    
     public static void menu() {
         System.out.println(" ");
         System.out.println(" ");
@@ -28,6 +28,12 @@ public class MotorBusqueda {
         System.out.println(" ");
     }
 
+    /**
+     * Obtiene archivos txt de la carpeta ingresada por el usuario.
+     *
+     * @param entrada Scanner para recibir ruta del archivo.
+     * @return Lista con archivos .txt
+     */
     public static List<File> getFiles(Scanner entrada) {
         String path;
         File directorio = null;

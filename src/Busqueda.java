@@ -14,11 +14,11 @@ import java.util.Map.Entry;
 public class Busqueda {
 
     /**
-     * Busca los documentos con más alta coincidencia
+     * Busca los 10 documentos de mayor coincidencia con la consulta.
      *
-     * @param docs     --Lista de documentos
-     * @param consulta -- Palabra a buscar
-     * @return Los 10 documentos con coincidencia mas alta
+     * @param docs     Recibe una lista de documentos.
+     * @param consulta Palabra a buscar.
+     * @return Lista con los 10 archivos que mejor coinciden con la consulta.
      */
     public List<String> compara(List<File> docs, String consulta) {
         List<String> resultado = new ArrayList<>();
