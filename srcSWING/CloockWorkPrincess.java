@@ -92,21 +92,16 @@ public class CloockWorkPrincess extends JFrame{
         boton.setBackground( new Color(255, 204, 255));
         boton.setForeground(new Color(204, 0, 204));
         boton.setText("EJECUTAR");
-        add(boton);
-
         ActionListener event = new ActionListener(){
            public void actionPerformed(ActionEvent e){
-               //texto = jTextField1.getText();
-               //System.out.println(texto);
-               //TextoContains(texto);
-               //fireInputChanged(jTextField1.getText());
-               jTextField1.selectAll();
+               texto = jTextField1.getText();
                dispose();
            }
 
         };
 
         boton.addActionListener(event);
+        add(boton);
     }
 
     public void TextoContains(String texto){
@@ -117,40 +112,21 @@ public class CloockWorkPrincess extends JFrame{
         return texto;
     }
     
-    /**private void eventosDelTeclado(){
-        KeyListener eventoTeclado = new KeyListener(){
-                @Override
-                public void keyPressed(KeyEvent e){
-                    if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                        texto = jTextField1.getText();
-                  }
-                }
-                @Override
-                public void keyReleased(KeyEvent e){
-                 int x;
-                }
-                @Override
-               public void keyTyped(KeyEvent e){
-                int y;
-               }
-
-        };
-        jTextField1.addKeyListener(eventoTeclado);
-
-      
-    }
-    */
+   
     
   
-    /**public static void main(String[] args) {
+public static void main(String[] args) {
         CloockWorkPrincess princess = new CloockWorkPrincess();
         princess.setBounds(0,0,450,655);
         princess.setResizable(false);
         princess.setVisible(true);
         princess.setLocationRelativeTo(null);
+        String paola = princess.showText();
+        System.out.println(paola);
+        int choose = Integer.parseInt(paola);
         
     }
-    */
+
 
 
 

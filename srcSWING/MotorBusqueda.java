@@ -4,6 +4,7 @@ import java.util.*;
 import java.io.*;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
+import javax.swing.SwingUtilities;
 
 /**
  * Implementacion Main Motor de Busqueda 
@@ -16,8 +17,9 @@ import javax.swing.ImageIcon;
 
 public class MotorBusqueda{
 
-    public static void menu(CloockWorkPrincess princess) {
-        /** 
+    public static void menu() {
+        //CloockWorkPrincess princess
+        
         System.out.println(" ");
         System.out.println(" ");
         System.out.println("-----------BIENVENID@-------------");
@@ -29,11 +31,21 @@ public class MotorBusqueda{
         System.out.println("Elija una opción ----------------");
         System.out.println("----------------------------------");
         System.out.println(" ");
-        */
+             /** 
+         princess.setBounds(0, 0, 450, 655);
+         princess.setResizable(false);
+         princess.setLocationRelativeTo(null);
+         SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                princess.setVisible(true);
+            }
+        });
+     
         princess.setBounds(0,0,450,655);
         princess.setResizable(false);
         princess.setVisible(true);
         princess.setLocationRelativeTo(null);
+        */
     }
 
     public static List<File> getFiles(Scanner entrada) {
@@ -48,7 +60,7 @@ public class MotorBusqueda{
                 path = JOptionPane.showInputDialog("Digite la ruta del directorio:", "Ruta");
                 path = path.trim();
                }catch(NullPointerException e){
-                imageDir1="C:\\Users\\Paola Vargas Bravo\\OneDrive\\Documentos\\Estructuras de Datos\\Imagenes Interfaz\\rose.jpg";
+                imageDir1="Imagenes Interfaz/rose.jpg";
                   //JOptionPane.showMessageDialog(null,"Usted cancelo la ejecución");
                   JOptionPane.showMessageDialog(null,"Usted cancelo la ejecución", "Clockwork Princess OFF",
                   JOptionPane.INFORMATION_MESSAGE, new ImageIcon(imageDir1));
@@ -100,21 +112,24 @@ public class MotorBusqueda{
                 }
                 iniciar = true;
             } else {
-                menu(princess);
-               /**  while (!in.hasNextInt()) {
+                menu();
+                while (!in.hasNextInt()) {
                     //System.out.println("<Da un Numero>");
-                    imageDir="C:\\Users\\Paola Vargas Bravo\\OneDrive\\Documentos\\Estructuras de Datos\\Imagenes Interfaz\\rosa.jpg";
+                    imageDir="Imagenes Interfaz/rosa.jpg";
                     // System.out.println("Esa no es una opción");
                     // System.out.println("Vuelve a intentarlo");
                     JOptionPane.showMessageDialog(null, "<Da un Numero>", "Clockwork Princess ON",
                     JOptionPane.INFORMATION_MESSAGE, new ImageIcon(imageDir));
                     in.nextLine();
                 }
+            
+            
+                /**chooseCadena =  princess.showText();
+                System.out.println(chooseCadena);
+                 Integer.parseInt(chooseCadena);//
+                   //System.out.println(choose);
                 */
-                chooseCadena =  princess.showText();
-                //System.out.println(chooseCadena);
-                choose = Integer.parseInt(chooseCadena);//in.nextInt();
-                System.out.println(choose);
+                choose =in.nextInt();
                 switch (choose){
                     case 1:
                         System.out.println("Digite su busqueda: ");
@@ -169,15 +184,17 @@ public class MotorBusqueda{
 
                     case 3:
                         isRunning = false;
-            imageDir="C:\\Users\\Paola Vargas Bravo\\OneDrive\\Documentos\\Estructuras de Datos\\Imagenes Interfaz\\takerose.jpg";
+                        imageDir="Imagenes Interfaz/takerose.jpg";
                         //JOptionPane.showMessageDialog(null,"Adios!");
+                       
                         JOptionPane.showMessageDialog(null, "Adios!", "Clockwork Princess off",
                 JOptionPane.INFORMATION_MESSAGE, new ImageIcon(imageDir));
                         break;
                     default:
                       JOptionPane.showMessageDialog(null, "Esa no es una opción",
                      "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
-             imageDir="C:\\Users\\Paola Vargas Bravo\\OneDrive\\Documentos\\Estructuras de Datos\\Imagenes Interfaz\\rosa.jpg";
+                     imageDir="Imagenes Interfaz/rosa.jpg";
+             
                        // System.out.println("Esa no es una opción");
                        // System.out.println("Vuelve a intentarlo");
                        JOptionPane.showMessageDialog(null, "Vuelve a intentarlo", "Clockwork Princess ON",
