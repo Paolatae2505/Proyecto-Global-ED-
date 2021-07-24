@@ -18,7 +18,7 @@ import javax.swing.SwingUtilities;
 public class MotorBusqueda{
 
     public static void menu() {
-        //CloockWorkPrincess princess
+        //CloockWorkPrincess princess  /// NOT USE
         
         System.out.println(" ");
         System.out.println(" ");
@@ -96,7 +96,7 @@ public class MotorBusqueda{
                 }
                 iniciar = true;
             } else {
-                menu();
+                menu(); /// run  Menu Interfaz Yo
                 while (!in.hasNextInt()) {
                     imageDir="Imagenes Interfaz/rosa.jpg";
                     JOptionPane.showMessageDialog(null, "<Da un Numero>", "Clockwork Princess ON",
@@ -107,7 +107,7 @@ public class MotorBusqueda{
                 choose =in.nextInt();
                 switch (choose){
                     case 1:
-                    System.out.println("Digite su busqueda: ");
+                    System.out.println("Digite su busqueda: "); /// Digitar la busqueda Vic
                      consulta = entrada.nextLine();
                         len = consulta.length();
                         while (len > 200) {
