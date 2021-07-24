@@ -16,13 +16,8 @@ import java.util.*;
 public class MotorBusqueda {
 
     public static void menu() {
-<<<<<<< HEAD
         //CloockWorkPrincess princess  /// NOT USE
         
-=======
-        //CloockWorkPrincess princess
-
->>>>>>> 0a7baffd4b5b1940d8c0f9811fad91f0ad0d7f0c
         System.out.println(" ");
         System.out.println(" ");
         System.out.println("-----------BIENVENID@-------------");
@@ -110,13 +105,13 @@ public class MotorBusqueda {
                 choose = in.nextInt();
                 switch (choose) {
                     case 1:
-<<<<<<< HEAD
+
                     System.out.println("Digite su busqueda: "); /// Digitar la busqueda Vic
                      consulta = entrada.nextLine();
-=======
+
                         System.out.println("Digite su busqueda: ");
                         consulta = entrada.nextLine();
->>>>>>> 0a7baffd4b5b1940d8c0f9811fad91f0ad0d7f0c
+
                         len = consulta.length();
                         while (len > 200) {
                             // System.out.println("Tu busqueda excede 200 palabras");

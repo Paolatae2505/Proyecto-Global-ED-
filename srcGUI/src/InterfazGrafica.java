@@ -1,3 +1,10 @@
+
+import java.io.File;
+import java.io.FilenameFilter;
+import java.util.*;
+import javax.swing.*;
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,6 +16,8 @@
  * @author victoria
  */
 public class InterfazGrafica extends javax.swing.JFrame {
+    
+    public int choose;
 
     /**
      * Creates new form InterfazGrafica
@@ -26,32 +35,155 @@ public class InterfazGrafica extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        tittle = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        rosaFondo = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tittle.setFont(new java.awt.Font("Cambria", 2, 36)); // NOI18N
+        tittle.setForeground(new java.awt.Color(255, 153, 255));
+        tittle.setText("ClockWork Princess");
+        getContentPane().add(tittle, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 360, 30));
+
+        jButton1.setBackground(new java.awt.Color(255, 204, 255));
+        jButton1.setFont(new java.awt.Font("Cambria", 0, 24)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(51, 0, 51));
+        jButton1.setText("1.Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 460, 170, 30));
+
+        jButton2.setBackground(new java.awt.Color(153, 0, 255));
+        jButton2.setFont(new java.awt.Font("Cambria", 0, 24)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(204, 153, 255));
+        jButton2.setText("2.Historial");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 500, 170, 30));
+
+        jButton3.setBackground(new java.awt.Color(51, 0, 51));
+        jButton3.setFont(new java.awt.Font("Cambria", 0, 24)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 204, 204));
+        jButton3.setText("3.Salir");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 540, 170, 30));
+
+        jLabel1.setFont(new java.awt.Font("Cambria", 2, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 204, 255));
+        jLabel1.setText("Pulse su Opción...");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, 190, -1));
+
+        rosaFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesInterfaz/Beauty and the beast.jpg"))); // NOI18N
+        rosaFondo.setText("jLabel1");
+        getContentPane().add(rosaFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 452, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    public int getChoose(){
+        return choose;
+    }
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // BUTTON1
+        choose = 1;
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       choose = 2;
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       choose = 3;
+    }//GEN-LAST:event_jButton3ActionPerformed
+     
+     public static List<File> getFiles(Scanner entrada) {
+        String path = "";
+        File directorio = null;
+        boolean allow = false;
+        String imageDir1 = "";
+        while (!allow) {
+            //System.out.println("Digite la ruta del directorio: ");
+            //entrada.nextLine();
+            try {
+                path = JOptionPane.showInputDialog("Digite la ruta del directorio:", "Ruta");
+                path = path.trim();
+            } catch (NullPointerException e) {
+                imageDir1 = "Imagenes Interfaz/rose.jpg";
+
+                JOptionPane.showMessageDialog(null, "Usted cancelo la ejecución", "Clockwork Princess OFF",
+                        JOptionPane.INFORMATION_MESSAGE, new ImageIcon(imageDir1));
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+            }
+
+            directorio = new File(path);
+            if (directorio.isDirectory() && directorio.exists()) {
+                allow = true;
+            } else {
+                allow = false;
+                JOptionPane.showMessageDialog(null, "Su directorio no existe",
+                        "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        File[] listFiles = directorio.listFiles(new FilenameFilter() {
+            public boolean accept(File dir, String name) {
+                return name.toLowerCase().endsWith(".txt");
+            }
+        });
+        return Arrays.asList(listFiles);
+    }
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+        ///// Atributos ////////
+      List<File> docs = new ArrayList<>();
+        List<String> resultados;
+        List<String> historial = new ArrayList<>();
+        Map<String, List<String>> cache = new HashMap<>();
+        Scanner entrada = new Scanner(System.in);
+        Scanner in = new Scanner(System.in);
+        String consulta;
+        String subPattern = "";
+        boolean iniciar = false;
+        boolean isRunning = true;
+        int choose;
+        int len;
+        String imageDir = ""; 
+            while (isRunning) {
+            if (!iniciar) {
+                docs = getFiles(entrada);
+                while (docs.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Su esta vacío",
+                            "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
+                    getFiles(entrada);
+                }
+                iniciar = true;
+             } else {
+                /////////////Menu/////////////////////
+              /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+                        try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -68,7 +200,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(InterfazGrafica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+ 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -76,7 +208,97 @@ public class InterfazGrafica extends javax.swing.JFrame {
             }
         });
     }
+       
+                /////////////////////////////////////
+       
+                choose = new InterfazGrafica().getChoose();
+                switch (choose) {
+                    case 1:
+
+                    System.out.println("Digite su busqueda: "); /// Digitar la busqueda Vic
+                     consulta = entrada.nextLine();
+
+                        System.out.println("Digite su busqueda: ");
+                        consulta = entrada.nextLine();
+
+                        len = consulta.length();
+                        while (len > 200) {
+                            // System.out.println("Tu busqueda excede 200 palabras");
+                            JOptionPane.showMessageDialog(null, "Tu busqueda excede 200 palabras",
+                                    "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
+                            System.out.println("Ingrese su busqueda :");
+                            // = entrada.nextLine();
+                            consulta = entrada.nextLine();
+                            len = consulta.length();
+                        }
+                        historial.add(0, consulta);
+                        if (cache.isEmpty()) {
+                            System.out.println(" ");
+                            resultados = new Busqueda().compara(docs, consulta);
+                            System.out.println(" ");
+                            System.out.println("Resultados : ");
+                            System.out.println(" ");
+                            for (String resultado : resultados) {
+                                System.out.println(resultado);
+                            }
+                            cache.put(consulta, resultados);
+                        } else {
+                            resultados = new Busqueda().containsCache(cache, consulta);
+                            if (resultados == null) {
+                                System.out.println(" ");
+                                resultados = new Busqueda().compara(docs, consulta);
+                                System.out.println(" ");
+                                System.out.println("Resultados : ");
+                                System.out.println(" ");
+                                for (String resultado : resultados) {
+                                    System.out.println(resultado);
+                                }
+                                cache.put(consulta, resultados);
+                            } else {
+                                System.out.println(" ");
+                                System.out.println("Resultados : ");
+                                System.out.println(" ");
+                                for (String resultado : resultados) {
+                                    System.out.println(resultado);
+                                }
+                            }
+                        }
+                        break;
+                    case 2:
+                        System.out.println("Historial:");
+                        for (String h : historial) {
+                            System.out.println(h);
+                        }
+                        break;
+
+                    case 3:
+                        isRunning = false;
+                        imageDir = "Imagenes Interfaz/takerose.jpg";
+                        //JOptionPane.showMessageDialog(null,"Adios!");
+
+                        JOptionPane.showMessageDialog(null, "Adios!", "Clockwork Princess off",
+                                JOptionPane.INFORMATION_MESSAGE, new ImageIcon(imageDir));
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(null, "Esa no es una opción",
+                                "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
+                        imageDir = "Imagenes Interfaz/rosa.jpg";
+                        JOptionPane.showMessageDialog(null, "Vuelve a intentarlo", "Clockwork Princess ON",
+                                JOptionPane.INFORMATION_MESSAGE, new ImageIcon(imageDir));
+                        break;
+                }
+            }
+        }
+        
+     
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel rosaFondo;
+    private javax.swing.JLabel tittle;
     // End of variables declaration//GEN-END:variables
 }
