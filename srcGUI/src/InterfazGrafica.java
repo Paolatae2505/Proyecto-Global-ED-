@@ -18,7 +18,7 @@ import javax.swing.*;
 public class InterfazGrafica extends javax.swing.JFrame {
     
   public int choose;
- public  String imageDir = "";
+ public Icon imagen;
 
     /**
      * Creates new form InterfazGrafica
@@ -111,13 +111,13 @@ public class InterfazGrafica extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-   
-        
-        imageDir = "Imagenes Interfaz/takerose.jpg";
+     
+
+       imagen =  new ImageIcon(getClass().getResource("/ImagenesInterfaz/takeRose.jpg"));
                         //JOptionPane.showMessageDialog(null,"Adios!");
 
                   JOptionPane.showMessageDialog(null, "Adios!", "Clockwork Princess off",
-                        JOptionPane.INFORMATION_MESSAGE, new ImageIcon(imageDir));
+                        JOptionPane.INFORMATION_MESSAGE,imagen );
           dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
      
@@ -125,7 +125,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         String path = "";
         File directorio = null;
         boolean allow = false;
-        String imageDir1 = "";
+
         while (!allow) {
             //System.out.println("Digite la ruta del directorio: ");
             //entrada.nextLine();
@@ -133,10 +133,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 path = JOptionPane.showInputDialog("Digite la ruta del directorio:", "Ruta");
                 path = path.trim();
             } catch (NullPointerException e) {
-                imageDir1 = "Imagenes Interfaz/rose.jpg";
-
                 JOptionPane.showMessageDialog(null, "Usted cancelo la ejecución", "Clockwork Princess OFF",
-                        JOptionPane.INFORMATION_MESSAGE, new ImageIcon(imageDir1));
+                        JOptionPane.INFORMATION_MESSAGE);
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
@@ -174,29 +172,13 @@ public class InterfazGrafica extends javax.swing.JFrame {
         boolean isRunning = true;
         int choose;
         int len;
-        String imageDir = ""; 
-            if (!iniciar) {
-                docs = getFiles(entrada);
+            docs = getFiles(entrada);
                 while (docs.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Su esta vacío",
+                    JOptionPane.showMessageDialog(null, "Su esta carpeta vacío",
                             "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
                     getFiles(entrada);
                 }
-                iniciar = true;
-             } else {
-  
-        //</editor-fold>
- 
-   
-       
-             }
-                     /////////////Menu/////////////////////
-              /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-                        try {
+                try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -218,6 +200,11 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 new InterfazGrafica().setVisible(true);
             }
         });
+  
+          
+
+                     /////////////Menu/////////////////////
+     
   
           
           
