@@ -31,21 +31,7 @@ public class MotorBusqueda{
         System.out.println("Elija una opción ----------------");
         System.out.println("----------------------------------");
         System.out.println(" ");
-             /** 
-         princess.setBounds(0, 0, 450, 655);
-         princess.setResizable(false);
-         princess.setLocationRelativeTo(null);
-         SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                princess.setVisible(true);
-            }
-        });
-     
-        princess.setBounds(0,0,450,655);
-        princess.setResizable(false);
-        princess.setVisible(true);
-        princess.setLocationRelativeTo(null);
-        */
+          
     }
 
     public static List<File> getFiles(Scanner entrada) {
@@ -61,7 +47,7 @@ public class MotorBusqueda{
                 path = path.trim();
                }catch(NullPointerException e){
                 imageDir1="Imagenes Interfaz/rose.jpg";
-                  //JOptionPane.showMessageDialog(null,"Usted cancelo la ejecución");
+    
                   JOptionPane.showMessageDialog(null,"Usted cancelo la ejecución", "Clockwork Princess OFF",
                   JOptionPane.INFORMATION_MESSAGE, new ImageIcon(imageDir1));
                }catch(Exception ex){
@@ -73,8 +59,6 @@ public class MotorBusqueda{
                 allow = true;
             } else {
                 allow = false;
-                //System.out.println("Su directorio no existe ");
-                //JOptionPane.showMessageDialog(null,"Su directorio no existe");
                 JOptionPane.showMessageDialog(null, "Su directorio no existe",
               "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
             }
@@ -101,47 +85,38 @@ public class MotorBusqueda{
         int choose;
         int len;
         String chooseCadena;
-        CloockWorkPrincess princess = new CloockWorkPrincess();
         String imageDir = "";
         while (isRunning) {
             if (!iniciar) {
                 docs = getFiles(entrada);
                 while (docs.isEmpty()) {
-                    System.out.println("Tu directorio está vacío!");
+                    JOptionPane.showMessageDialog(null, "Su esta vacío",
+                    "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
                     getFiles(entrada);
                 }
                 iniciar = true;
             } else {
                 menu();
                 while (!in.hasNextInt()) {
-                    //System.out.println("<Da un Numero>");
                     imageDir="Imagenes Interfaz/rosa.jpg";
-                    // System.out.println("Esa no es una opción");
-                    // System.out.println("Vuelve a intentarlo");
                     JOptionPane.showMessageDialog(null, "<Da un Numero>", "Clockwork Princess ON",
                     JOptionPane.INFORMATION_MESSAGE, new ImageIcon(imageDir));
                     in.nextLine();
                 }
             
-            
-                /**chooseCadena =  princess.showText();
-                System.out.println(chooseCadena);
-                 Integer.parseInt(chooseCadena);//
-                   //System.out.println(choose);
-                */
                 choose =in.nextInt();
                 switch (choose){
                     case 1:
-                        System.out.println("Digite su busqueda: ");
-                        consulta = entrada.nextLine();
+                    System.out.println("Digite su busqueda: ");
+                     consulta = entrada.nextLine();
                         len = consulta.length();
                         while (len > 200) {
                            // System.out.println("Tu busqueda excede 200 palabras");
                            JOptionPane.showMessageDialog(null, "Tu busqueda excede 200 palabras",
               "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
-                            //System.out.println("Ingrese su busqueda :");
+                            System.out.println("Ingrese su busqueda :");
                             // = entrada.nextLine();
-                            consulta = JOptionPane.showInputDialog("Ingrese su busqueda :");
+                            consulta = entrada.nextLine();
                             len = consulta.length();
                         }
                         historial.push(consulta);
@@ -194,12 +169,8 @@ public class MotorBusqueda{
                       JOptionPane.showMessageDialog(null, "Esa no es una opción",
                      "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
                      imageDir="Imagenes Interfaz/rosa.jpg";
-             
-                       // System.out.println("Esa no es una opción");
-                       // System.out.println("Vuelve a intentarlo");
                        JOptionPane.showMessageDialog(null, "Vuelve a intentarlo", "Clockwork Princess ON",
                        JOptionPane.INFORMATION_MESSAGE, new ImageIcon(imageDir));
-                      // JOptionPane.showMessageDialog(null,"Vuelve a intentarlo");
                         break;
                 }
             }
