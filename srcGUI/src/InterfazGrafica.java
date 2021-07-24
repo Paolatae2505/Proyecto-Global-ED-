@@ -17,7 +17,8 @@ import javax.swing.*;
  */
 public class InterfazGrafica extends javax.swing.JFrame {
     
-    public int choose;
+  public int choose;
+ public  String imageDir = "";
 
     /**
      * Creates new form InterfazGrafica
@@ -94,13 +95,13 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public int getChoose(){
-        return choose;
-    }
+
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // BUTTON1
-        choose = 1;
+        
+       System.out.println("Hola");
+       dispose();
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -110,7 +111,14 @@ public class InterfazGrafica extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       choose = 3;
+   
+        
+        imageDir = "Imagenes Interfaz/takerose.jpg";
+                        //JOptionPane.showMessageDialog(null,"Adios!");
+
+                  JOptionPane.showMessageDialog(null, "Adios!", "Clockwork Princess off",
+                        JOptionPane.INFORMATION_MESSAGE, new ImageIcon(imageDir));
+          dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
      
      public static List<File> getFiles(Scanner entrada) {
@@ -167,7 +175,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
         int choose;
         int len;
         String imageDir = ""; 
-            while (isRunning) {
             if (!iniciar) {
                 docs = getFiles(entrada);
                 while (docs.isEmpty()) {
@@ -177,7 +184,13 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 }
                 iniciar = true;
              } else {
-                /////////////Menu/////////////////////
+  
+        //</editor-fold>
+ 
+   
+       
+             }
+                     /////////////Menu/////////////////////
               /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -199,95 +212,15 @@ public class InterfazGrafica extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(InterfazGrafica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
- 
-        /* Create and display the form */
+                /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new InterfazGrafica().setVisible(true);
             }
         });
-    }
-       
-                /////////////////////////////////////
-       
-                choose = new InterfazGrafica().getChoose();
-                switch (choose) {
-                    case 1:
-
-                    System.out.println("Digite su busqueda: "); /// Digitar la busqueda Vic
-                     consulta = entrada.nextLine();
-
-                        System.out.println("Digite su busqueda: ");
-                        consulta = entrada.nextLine();
-
-                        len = consulta.length();
-                        while (len > 200) {
-                            // System.out.println("Tu busqueda excede 200 palabras");
-                            JOptionPane.showMessageDialog(null, "Tu busqueda excede 200 palabras",
-                                    "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
-                            System.out.println("Ingrese su busqueda :");
-                            // = entrada.nextLine();
-                            consulta = entrada.nextLine();
-                            len = consulta.length();
-                        }
-                        historial.add(0, consulta);
-                        if (cache.isEmpty()) {
-                            System.out.println(" ");
-                            resultados = new Busqueda().compara(docs, consulta);
-                            System.out.println(" ");
-                            System.out.println("Resultados : ");
-                            System.out.println(" ");
-                            for (String resultado : resultados) {
-                                System.out.println(resultado);
-                            }
-                            cache.put(consulta, resultados);
-                        } else {
-                            resultados = new Busqueda().containsCache(cache, consulta);
-                            if (resultados == null) {
-                                System.out.println(" ");
-                                resultados = new Busqueda().compara(docs, consulta);
-                                System.out.println(" ");
-                                System.out.println("Resultados : ");
-                                System.out.println(" ");
-                                for (String resultado : resultados) {
-                                    System.out.println(resultado);
-                                }
-                                cache.put(consulta, resultados);
-                            } else {
-                                System.out.println(" ");
-                                System.out.println("Resultados : ");
-                                System.out.println(" ");
-                                for (String resultado : resultados) {
-                                    System.out.println(resultado);
-                                }
-                            }
-                        }
-                        break;
-                    case 2:
-                        System.out.println("Historial:");
-                        for (String h : historial) {
-                            System.out.println(h);
-                        }
-                        break;
-
-                    case 3:
-                        isRunning = false;
-                        imageDir = "Imagenes Interfaz/takerose.jpg";
-                        //JOptionPane.showMessageDialog(null,"Adios!");
-
-                        JOptionPane.showMessageDialog(null, "Adios!", "Clockwork Princess off",
-                                JOptionPane.INFORMATION_MESSAGE, new ImageIcon(imageDir));
-                        break;
-                    default:
-                        JOptionPane.showMessageDialog(null, "Esa no es una opción",
-                                "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
-                        imageDir = "Imagenes Interfaz/rosa.jpg";
-                        JOptionPane.showMessageDialog(null, "Vuelve a intentarlo", "Clockwork Princess ON",
-                                JOptionPane.INFORMATION_MESSAGE, new ImageIcon(imageDir));
-                        break;
-                }
-            }
+  
+          
+          
         }
         
      
