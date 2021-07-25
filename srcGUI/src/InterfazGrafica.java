@@ -17,9 +17,9 @@ import javax.swing.*;
  */
 public class InterfazGrafica extends javax.swing.JFrame {
     
- public int choose;
- public Icon imagen;
- public List<File> documentos = new ArrayList<>();
+ private int choose;
+ private Icon imagen;
+ private List<File> documentos = new ArrayList<>();
 
     /**
      * Creates new form InterfazGrafica
