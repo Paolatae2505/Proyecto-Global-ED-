@@ -103,8 +103,6 @@ public class Consulta extends javax.swing.JFrame {
         // TODO add your handling code here:
         consulta = areadeTexto.getText();
         new Historial().addConsulta(consulta);
-        resultadosFinales = new Resultados();
-        cache = new HashMap<>();
         
        if(cache.isEmpty()){
               resultados = busqueda.compara(docs,consulta);
