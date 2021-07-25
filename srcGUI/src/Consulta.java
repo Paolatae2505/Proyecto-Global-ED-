@@ -12,12 +12,12 @@ import java.io.*;
  */
 public class Consulta extends javax.swing.JFrame {
     
-     private  List<File> docs ;
-     private Busqueda busqueda = new Busqueda();
-     private List<String> resultados;
-     private String consulta ;
-     private Map<String, List<String>> cache = new HashMap<>();
-     private Resultados resultadosFinales = new Resultados();
+     public  List<File> docs;
+     public Busqueda busqueda = new Busqueda();
+     public  List<String> resultados;
+     public  String consulta ;
+     public Map<String, List<String>> cache;
+     public  Resultados resultadosFinales;
 
     /**
      * Creates new form Consulta
@@ -78,11 +78,8 @@ public class Consulta extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    public void setDocumentos(List<File> documentos){
-        docs = documentos;
-    }
-     public List<File> getDocumentos(){
-        return docs;
+    public void setDocumentos(List<File> docs){
+        this.docs = docs;
     }
     
     public List<String> getResultados(){
@@ -100,13 +97,18 @@ public class Consulta extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        consulta = areadeTexto.getText();     
-
-  
+        consulta = areadeTexto.getText();
+        new Historial().addConsulta(consulta);
+        resultadosFinales = new Resultados();
+        cache = new HashMap<>();
+        
+    System.out.println(cache.size());
+    System.out.println(cache.isEmpty());
        if(cache.isEmpty()){
               resultados = busqueda.compara(docs,consulta);
               resultadosFinales.setStringFinales(resultados); 
              cache.put(consulta, resultados);
+             System.out.println(cache.size()); 
        }else{
           resultados = busqueda.containsCache(cache, consulta);
           

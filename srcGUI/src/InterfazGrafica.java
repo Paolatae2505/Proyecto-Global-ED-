@@ -17,9 +17,9 @@ import javax.swing.*;
  */
 public class InterfazGrafica extends javax.swing.JFrame {
     
- private int choose;
- private Icon imagen;
- private List<File> documentos = new ArrayList<>();
+ public int choose;
+ public Icon imagen;
+ public List<File> documentos = new ArrayList<>();
 
     /**
      * Creates new form InterfazGrafica
@@ -119,7 +119,9 @@ public class InterfazGrafica extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-     /// Nada por ahora 
+        /// Nada por ahora 
+        new Historial().setVisible(true);
+        setVisible(false);
        
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -137,8 +139,9 @@ public class InterfazGrafica extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        // TODO add your handling code here:
- 
+        Historial historial = new Historial();
+        historial.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
