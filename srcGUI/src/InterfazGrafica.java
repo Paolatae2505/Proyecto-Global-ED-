@@ -17,14 +17,18 @@ import javax.swing.*;
  */
 public class InterfazGrafica extends javax.swing.JFrame {
     
-  public int choose;
+ public int choose;
  public Icon imagen;
+ public List<File> documentos = new ArrayList<>();
 
     /**
      * Creates new form InterfazGrafica
      */
     public InterfazGrafica() {
         initComponents();
+           setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+         
     }
 
     /**
@@ -55,6 +59,11 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Cambria", 0, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(51, 0, 51));
         jButton1.setText("1.Buscar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -66,6 +75,11 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Cambria", 0, 24)); // NOI18N
         jButton2.setForeground(new java.awt.Color(204, 153, 255));
         jButton2.setText("2.Historial");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -100,27 +114,42 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // BUTTON1
         
-       System.out.println("Hola");
-       dispose();
-        
+
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       choose = 2;
+     /// Nada por ahora 
+       
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
      
-
        imagen =  new ImageIcon(getClass().getResource("/ImagenesInterfaz/takeRose.jpg"));
                         //JOptionPane.showMessageDialog(null,"Adios!");
 
                   JOptionPane.showMessageDialog(null, "Adios!", "Clockwork Princess off",
                         JOptionPane.INFORMATION_MESSAGE,imagen );
-          dispose();
+           System.exit(0);
+          //dispose();
+       
+         
     }//GEN-LAST:event_jButton3ActionPerformed
-     
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+ 
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+         Consulta consulta = new Consulta();
+        consulta.setDocumentos(documentos);
+        consulta.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_jButton1MouseClicked
+     public void setDocsFiles(List<File> documentos){
+         this.documentos = documentos;
+     }
      public static List<File> getFiles(Scanner entrada) {
         String path = "";
         File directorio = null;
@@ -135,8 +164,11 @@ public class InterfazGrafica extends javax.swing.JFrame {
             } catch (NullPointerException e) {
                 JOptionPane.showMessageDialog(null, "Usted cancelo la ejecución", "Clockwork Princess OFF",
                         JOptionPane.INFORMATION_MESSAGE);
-            } catch (Exception ex) {
-                System.out.println(ex.getMessage());
+                System.exit(0);
+            } catch (Exception ex){
+                  JOptionPane.showMessageDialog(null, "Usted cancelo la ejecución", "Clockwork Princess OFF",
+                        JOptionPane.INFORMATION_MESSAGE);
+                System.exit(0);
             }
 
             directorio = new File(path);
@@ -167,17 +199,23 @@ public class InterfazGrafica extends javax.swing.JFrame {
         Scanner entrada = new Scanner(System.in);
         Scanner in = new Scanner(System.in);
         String consulta;
+       boolean isRunning = true;
         String subPattern = "";
         boolean iniciar = false;
-        boolean isRunning = true;
+        boolean op = true;
         int choose;
         int len;
+        
             docs = getFiles(entrada);
+     
                 while (docs.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Su esta carpeta vacío",
                             "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
                     getFiles(entrada);
                 }
+             new InterfazGrafica().setDocsFiles(docs);
+             new Consulta().setCache(cache);
+      
                 try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -200,13 +238,11 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 new InterfazGrafica().setVisible(true);
             }
         });
-  
           
-
-                     /////////////Menu/////////////////////
-     
-  
-          
+       /// System.exit(0);
+        
+        
+    
           
         }
         

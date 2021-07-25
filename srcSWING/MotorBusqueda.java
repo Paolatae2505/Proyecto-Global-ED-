@@ -109,9 +109,6 @@ public class MotorBusqueda {
                     System.out.println("Digite su busqueda: "); /// Digitar la busqueda Vic
                      consulta = entrada.nextLine();
 
-                        System.out.println("Digite su busqueda: ");
-                        consulta = entrada.nextLine();
-
                         len = consulta.length();
                         while (len > 200) {
                             // System.out.println("Tu busqueda excede 200 palabras");

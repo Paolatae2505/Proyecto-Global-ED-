@@ -12,7 +12,7 @@ import java.util.Map.Entry;
  */
 
 public class Busqueda {
-
+    
     /**
      * Busca los 10 documentos de mayor coincidencia con la consulta.
      *
@@ -21,14 +21,16 @@ public class Busqueda {
      * @return Lista con los 10 archivos que mejor coinciden con la consulta.
      */
     public List<String> compara(List<File> docs, String consulta) {
-        List<String> resultado = new ArrayList<>();
+      List<String> resultado = new ArrayList<>();
         double sim;
+        /*Se crea mapa con key = nombre de archivo, value = sim */
         Map<String, Double> simPorDoc = new Hashtable<>();
         int j = 1;
         double r = docs.size();
         double porcentaje;
         for (File doc : docs) {
             porcentaje = (j / r) * 100;
+            System.out.println("Hola");
             sim = new TFIDF().sim(docs, consulta, doc);
             System.out.printf("----- Progreso : %.2f", porcentaje);
             System.out.println("%-----");
@@ -37,8 +39,10 @@ public class Busqueda {
             }
             j++;
         }
+
         if (simPorDoc.isEmpty()) {
             resultado.add("No hay coincidencias.");
+            System.out.println("no esta bien");
         } else {
             //Regresar los valores más altos de sim en el árbol (max 10)
             Set<Entry<String, Double>> entradas = simPorDoc.entrySet();
@@ -55,7 +59,7 @@ public class Busqueda {
         }
         return resultado;
     }
-
+     
     /**
      * Busca si una palabra esta en el cache
      *
