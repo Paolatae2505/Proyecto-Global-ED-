@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class Resultados extends javax.swing.JFrame {
     
-        public  List<String> resultados;
+        private List<String> resultados;
 
     /**
      * Creates new form Resultados
@@ -92,7 +92,7 @@ public class Resultados extends javax.swing.JFrame {
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.out.println(resultados.size());
-          String cadena = "";
+        String cadena = "";
         for (String resultado : resultados) {
             cadena = cadena + resultado + "\n";  
         } 
