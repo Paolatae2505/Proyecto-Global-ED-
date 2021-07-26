@@ -19,7 +19,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     
  private int choose;
  private Icon imagen;
- private List<File> documentos = new ArrayList<>();
+ private static List<File> documentos = new ArrayList<>();
 
     /**
      * Creates new form InterfazGrafica
@@ -217,7 +217,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                     getFiles(entrada);
                 }
              new InterfazGrafica().setDocsFiles(docs);
-             new Consulta().setCache(cache);
+           //  new Consulta().setCache(cache);
       
                 try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

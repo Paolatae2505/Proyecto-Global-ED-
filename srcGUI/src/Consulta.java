@@ -12,12 +12,12 @@ import java.io.*;
  */
 public class Consulta extends javax.swing.JFrame {
     
-     public List<File> docs;
+     public static List<File> docs = new ArrayList<>();
      public Busqueda busqueda = new Busqueda();
-     public List<String> resultados;
+     public static List<String> resultados = new ArrayList<>();
      public String consulta ;
-     public Map<String, List<String>> cache;
-     public Resultados resultadosFinales;
+     public static Map<String, List<String>> cache = new HashMap<>();;
+     public Resultados resultadosFinales = new Resultados();
 
     /**
      * Creates new form Consulta

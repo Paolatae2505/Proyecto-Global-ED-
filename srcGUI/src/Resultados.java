@@ -1,5 +1,5 @@
 
-import java.util.List;
+import java.util.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,14 +13,14 @@ import java.util.List;
  */
 public class Resultados extends javax.swing.JFrame {
     
-        private List<String> resultados;
+        private List<String> resultados = new ArrayList<>();
 
     /**
      * Creates new form Resultados
      */
     public Resultados() {
         initComponents();
-           setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         texto.setEditable(false);
    
