@@ -6,8 +6,11 @@ import java.util.*;
  */
 
 /**
- *
- * @author victoria
+ * Interfaz que maneja el Historial de busqueda
+ * @author Barón Herrera Helena Victoria
+ * @author Vargas Bravo Paola
+ * @version 1.0 (17 de Julio 2021)
+ * @since Estructuras de datos 2021-2.
  */
 public class Historial extends javax.swing.JFrame {
     public static List<String> consultas = new ArrayList<>();

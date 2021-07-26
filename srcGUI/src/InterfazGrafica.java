@@ -12,8 +12,11 @@ import javax.swing.*;
  */
 
 /**
- *
- * @author victoria
+ * Interfaz que maneja el menú del motor de Busqueda
+ * @author Barón Herrera Helena Victoria
+ * @author Vargas Bravo Paola
+ * @version 1.0 (17 de Julio 2021)
+ * @since Estructuras de datos 2021-2.
  */
 public class InterfazGrafica extends javax.swing.JFrame {
     
@@ -191,6 +194,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
         return Arrays.asList(listFiles);
     }
     /**
+     * @author Vargas Bravo Paola
+     * @author Barón Herrera Victotia Helena 
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -212,7 +217,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
             docs = getFiles(entrada);
      
                 while (docs.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Su esta carpeta vacío",
+                    JOptionPane.showMessageDialog(null, "Su esta carpeta vacía",
                             "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
                     getFiles(entrada);
                 }

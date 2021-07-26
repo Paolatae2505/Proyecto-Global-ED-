@@ -4,7 +4,6 @@ import java.util.Map.Entry;
 
 /**
  * Implementacion Clase busqueda de palabra
- *
  * @author Baron Herrera Victoria
  * @author Vargas Bravo Paola
  * @version 1.0 (17 de Julio 2021)
@@ -15,7 +14,6 @@ public class Busqueda {
     
     /**
      * Busca los 10 documentos de mayor coincidencia con la consulta.
-     *
      * @param docs     Recibe una lista de documentos.
      * @param consulta Palabra a buscar.
      * @return Lista con los 10 archivos que mejor coinciden con la consulta.

@@ -8,11 +8,16 @@ import java.util.*;
  */
 
 /**
- *
- * @author Paola Vargas Bravo
+ * Interfaz que manaja los resultados de la busqueda 
+ * @author Barón Herrera Helena Victoria
+ * @author Vargas Bravo Paola
+ * @version 1.0 (17 de Julio 2021)
+ * @since Estructuras de datos 2021-2.
  */
 public class Resultados extends javax.swing.JFrame {
     
+    //// ATRIBUTOS
+        
         private List<String> resultados = new ArrayList<>();
 
     /**
@@ -48,7 +53,7 @@ public class Resultados extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Cambria", 2, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 255, 255));
         jLabel2.setText("RESULTADOS");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 280, 70));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 280, 70));
 
         texto.setBackground(new java.awt.Color(204, 204, 255));
         texto.setColumns(20);
@@ -78,7 +83,7 @@ public class Resultados extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 530, 100, 30));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 530, 100, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesInterfaz/リトルプリンス 星の王子さまと私 _ December 13th, 2015 - pixiv.png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -86,7 +91,10 @@ public class Resultados extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-     
+    /**
+    * Asigna el valor a la lista de resultados
+    * @param resultados lista de resultados
+    */
     public void setStringFinales(List<String> resultados){
         this.resultados = resultados;
     }
@@ -107,6 +115,11 @@ public class Resultados extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
  
     /**
+     * Main que ejecuta la interfaz
+     * @author Barón Herrera Helena Victoria
+     * @author Vargas Bravo Paola
+     * @version 1.0 (17 de Julio 2021)
+     * @since Estructuras de datos 2021-2.
      * @param args the command line arguments
      */
     public static void main(String args[]) {

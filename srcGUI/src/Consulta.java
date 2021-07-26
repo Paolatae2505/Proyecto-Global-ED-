@@ -1,5 +1,6 @@
 import java.util.*;
 import java.io.*;
+import javax.swing.JOptionPane;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -7,17 +8,21 @@ import java.io.*;
  */
 
 /**
- *
- * @author Paola Vargas Bravo
+ * Interfaz que maneja  la consulta de los datos 
+ * @author Barón Herrera Helena Victoria
+ * @author Vargas Bravo Paola
+ * @version 1.0 (17 de Julio 2021)
+ * @since Estructuras de datos 2021-2.
  */
 public class Consulta extends javax.swing.JFrame {
-    
-     public static List<File> docs = new ArrayList<>();
-     public Busqueda busqueda = new Busqueda();
-     public static List<String> resultados = new ArrayList<>();
-     public String consulta ;
-     public static Map<String, List<String>> cache = new HashMap<>();;
-     public Resultados resultadosFinales = new Resultados();
+     /// ATRIBUTOS/////////
+     private static List<File> docs = new ArrayList<>();
+     private Busqueda busqueda = new Busqueda();
+     private static List<String> resultados = new ArrayList<>();
+     private String consulta ;
+     private static Map<String, List<String>> cache = new HashMap<>();;
+     private Resultados resultadosFinales = new Resultados();
+     private int leng;
 
     /**
      * Creates new form Consulta
@@ -56,7 +61,7 @@ public class Consulta extends javax.swing.JFrame {
         areadeTexto.setRows(5);
         jScrollPane2.setViewportView(areadeTexto);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 310, 50));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 360, 90));
 
         jButton1.setText("consultar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -64,7 +69,7 @@ public class Consulta extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 102, 120, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 120, -1));
         getContentPane().add(progressBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 490, 40));
 
         jButton2.setText("Resulatdos");
@@ -77,31 +82,57 @@ public class Consulta extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+    /**
+     * Asignar el valor a los documentos
+     * @param  documentos lista de documentos
+     */
     public void setDocumentos(List<File> documentos){
         docs = documentos;
     }
     
+    /***
+     * Obtener la lista de documentos
+     * @return lista de documentos
+     */
+    
      public List<File> getDocumentos(){
         return docs;
     }
-    
+    /***
+     * Obtener la lista de reusltados
+     * @return resultados
+     */
     public List<String> getResultados(){
         return resultados;
     }
-    
+    /**
+     * Obtener la cadena de  consulta
+     * @return consulta
+     */
     public String getConsulta(){
         return consulta;
     }
-    
+    /**
+     * Asignar valor a la lista de cache
+     * @param cache Map de cache 
+     */
     public void setCache( Map<String, List<String>> cache){
         this.cache = cache;
     }
     
-
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         consulta = areadeTexto.getText();
+        System.out.println(consulta.length());
+         leng = consulta.length();
+              if(leng > 200){
+                   // System.out.println("Tu busqueda excede 200 palabras");
+                JOptionPane.showMessageDialog(null, "Tu busqueda excede 200 palabras",
+                                    "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);                
+             setVisible(false);
+             new Consulta().setVisible(true);
+         }else{
         new Historial().addConsulta(consulta);
         
        if(cache.isEmpty()){
@@ -120,6 +151,8 @@ public class Consulta extends javax.swing.JFrame {
              
           }
        }
+       
+    }
                 
     }//GEN-LAST:event_jButton1ActionPerformed
 
