@@ -122,10 +122,10 @@ public class InterfazGrafica extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        /// Nada por ahora 
+       /// Nada por ahora 
         new Historial().setVisible(true);
         setVisible(false);
-       
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -205,9 +205,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     public static void main(String args[]) {
         ///// Atributos ////////
       List<File> docs = new ArrayList<>();
-     
-       
-        
+    
             docs = getFiles();
      
                 while (docs.isEmpty()) {

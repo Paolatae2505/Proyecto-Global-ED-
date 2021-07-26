@@ -14,7 +14,6 @@ import java.util.*;
  */
 public class Historial extends javax.swing.JFrame {
     public static List<String> consultas = new ArrayList<>();
-    public String consulta;
     /**
      * Creates new form Historial
      */
@@ -23,15 +22,16 @@ public class Historial extends javax.swing.JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         areaTexto.setEditable(false);
+        imprimeHistorial();
     }
     
       public void addConsulta(String consulta){
-        consultas.add(0, this.consulta);
+        consultas.add(0, consulta);
     }
     
-    public void imprimeHistorial(){
+    public static void imprimeHistorial(){
         String t = "";
-        if(consultas != null){
+        if(!consultas.isEmpty()){
             for(String c : consultas){
                 t+= t + "\n" + c;
             }
@@ -129,7 +129,7 @@ public class Historial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea areaTexto;
+    private static javax.swing.JTextArea areaTexto;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton listo;
     private javax.swing.JLabel titulo;
