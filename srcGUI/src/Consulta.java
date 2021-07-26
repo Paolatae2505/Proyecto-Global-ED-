@@ -123,8 +123,12 @@ public class Consulta extends javax.swing.JFrame {
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String aux = "";
+        int longitud = 0;
         consulta = areadeTexto.getText();
-        if(consulta.isEmpty() || (!consulta.matches("^(?=.*[A-Z])(?=.*[0-9])[A-Z0-9]+$"))){
+        aux = consulta.trim();
+        longitud = aux.length();
+        if(consulta.isEmpty()||(longitud == 0) ){
           JOptionPane.showMessageDialog(null, "Tu cadena es vacía",
                                     "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE); 
             setVisible(false);
