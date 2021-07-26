@@ -123,8 +123,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        /// Nada por ahora 
-        new Historial().setVisible(true);
-        setVisible(false);
+       // new Historial().setVisible(true);
+       // setVisible(false);
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -148,7 +148,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-         Consulta consulta = new Consulta();
+        Consulta consulta = new Consulta();
         consulta.setDocumentos(documentos);
         consulta.setVisible(true);
         setVisible(false);

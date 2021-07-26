@@ -29,7 +29,7 @@ public class Historial extends javax.swing.JFrame {
         consultas.add(0, consulta);
     }
     
-    public static void imprimeHistorial(){
+    public  void imprimeHistorial(){
         String t = "";
         if(!consultas.isEmpty()){
             for(String c : consultas){
@@ -94,6 +94,11 @@ public class Historial extends javax.swing.JFrame {
     }//GEN-LAST:event_listoActionPerformed
 
     /**
+     * Main que ejecuta la interfaz de Historial 
+     * @author Barón Herrera Helena Victoria
+     * @author Vargas Bravo Paola
+     * @version 1.0 (17 de Julio 2021)
+     * @since Estructuras de datos 2021-2.
      * @param args the command line arguments
      */
     public static void main(String args[]) {
