@@ -124,7 +124,13 @@ public class Consulta extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         consulta = areadeTexto.getText();
-        System.out.println(consulta.length());
+        if(consulta.isEmpty() || (!consulta.matches("^(?=.*[A-Z])(?=.*[0-9])[A-Z0-9]+$"))){
+          JOptionPane.showMessageDialog(null, "Tu cadena es vacía",
+                                    "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE); 
+            setVisible(false);
+            new Consulta().setVisible(true);
+            
+        }else{
          leng = consulta.length();
               if(leng > 200){
                    // System.out.println("Tu busqueda excede 200 palabras");
@@ -160,6 +166,8 @@ public class Consulta extends javax.swing.JFrame {
           }
        }
        
+    }
+              
     }
                 
     }//GEN-LAST:event_jButton1ActionPerformed
