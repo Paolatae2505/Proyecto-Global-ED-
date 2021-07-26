@@ -28,6 +28,7 @@ public class Resultados extends javax.swing.JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         texto.setEditable(false);
+        jButton2.setVisible(false);
    
     }
 
@@ -105,6 +106,7 @@ public class Resultados extends javax.swing.JFrame {
             cadena = cadena + resultado + "\n";  
         } 
          texto.setText(cadena);
+         jButton2.setVisible(true);
          
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -115,7 +117,7 @@ public class Resultados extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
  
     /**
-     * Main que ejecuta la interfaz
+     * Main que ejecuta la interfaz de Resultados
      * @author Barón Herrera Helena Victoria
      * @author Vargas Bravo Paola
      * @version 1.0 (17 de Julio 2021)

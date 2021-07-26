@@ -70,7 +70,7 @@ public class Consulta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 120, -1));
-        getContentPane().add(progressBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 490, 40));
+        getContentPane().add(progressBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 490, 40));
 
         jButton2.setText("Resulatdos");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -78,7 +78,7 @@ public class Consulta extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 190, 120, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 120, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -138,12 +138,17 @@ public class Consulta extends javax.swing.JFrame {
        if(cache.isEmpty()){
               resultados = busqueda.compara(docs,consulta);
               resultadosFinales.setStringFinales(resultados); 
+              consulta = consulta.replaceAll("\\W+", "");
+              System.out.println(consulta);
              cache.put(consulta, resultados);
        }else{
+           consulta = consulta.replaceAll("\\W+", "");
           resultados = busqueda.containsCache(cache, consulta);
           
           if(resultados == null){
             resultados =  busqueda.compara(docs, consulta);
+            consulta = consulta.replaceAll("\\W+", "");
+             System.out.println(consulta);
             cache.put(consulta, resultados);
             resultadosFinales. setStringFinales(resultados);
           }else{
@@ -162,7 +167,13 @@ public class Consulta extends javax.swing.JFrame {
                setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    /**
+   
+     /**
+     * Main que ejecuta la interfaz de Consulta
+     * @author Barón Herrera Helena Victoria
+     * @author Vargas Bravo Paola
+     * @version 1.0 (17 de Julio 2021)
+     * @since Estructuras de datos 2021-2.
      * @param args the command line arguments
      */
     public static void main(String args[]) {

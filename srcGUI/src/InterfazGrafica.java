@@ -156,7 +156,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
      public void setDocsFiles(List<File> documentos){
          this.documentos = documentos;
      }
-     public static List<File> getFiles(Scanner entrada) {
+     public static List<File> getFiles() {
         String path = "";
         File directorio = null;
         boolean allow = false;
@@ -193,33 +193,27 @@ public class InterfazGrafica extends javax.swing.JFrame {
         });
         return Arrays.asList(listFiles);
     }
-    /**
+     
+     /**
+     * Main que ejecuta la interfazGrafica
+     * @author Barón Herrera Helena Victoria
      * @author Vargas Bravo Paola
-     * @author Barón Herrera Victotia Helena 
+     * @version 1.0 (17 de Julio 2021)
+     * @since Estructuras de datos 2021-2.
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         ///// Atributos ////////
       List<File> docs = new ArrayList<>();
-        List<String> resultados;
-        List<String> historial = new ArrayList<>();
-        Map<String, List<String>> cache = new HashMap<>();
-        Scanner entrada = new Scanner(System.in);
-        Scanner in = new Scanner(System.in);
-        String consulta;
-       boolean isRunning = true;
-        String subPattern = "";
-        boolean iniciar = false;
-        boolean op = true;
-        int choose;
-        int len;
+     
+       
         
-            docs = getFiles(entrada);
+            docs = getFiles();
      
                 while (docs.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Su esta carpeta vacía",
                             "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
-                    getFiles(entrada);
+                    getFiles();
                 }
              new InterfazGrafica().setDocsFiles(docs);
            //  new Consulta().setCache(cache);
