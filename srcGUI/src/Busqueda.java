@@ -69,7 +69,7 @@ public class Busqueda {
         if (d.containsKey(consulta)) {
             for (Map.Entry<String, List<String>> entry : d.entrySet()) {
                 key = entry.getKey();
-                if (key.equals(consulta)) {
+                if (key.equalsIgnoreCase(consulta)) {
                     return d.get(consulta);
                 }
             }
