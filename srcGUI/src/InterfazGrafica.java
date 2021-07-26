@@ -29,7 +29,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
      */
     public InterfazGrafica() {
         initComponents();
-           setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
          
     }
@@ -115,16 +115,10 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // BUTTON1
-        
-
-        
+      
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       /// Nada por ahora 
-       // new Historial().setVisible(true);
-       // setVisible(false);
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -136,8 +130,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
                   JOptionPane.showMessageDialog(null, "Adios!", "Clockwork Princess off",
                         JOptionPane.INFORMATION_MESSAGE,imagen );
            System.exit(0);
-          //dispose();
-       
          
     }//GEN-LAST:event_jButton3ActionPerformed
 

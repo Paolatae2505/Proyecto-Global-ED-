@@ -138,17 +138,20 @@ public class Consulta extends javax.swing.JFrame {
        if(cache.isEmpty()){
               resultados = busqueda.compara(docs,consulta);
               resultadosFinales.setStringFinales(resultados); 
-              //consulta = consulta.replaceAll("\\W+", "");
+              consulta = consulta.replaceAll("\\W+", "");
+              consulta = consulta.toLowerCase();
               System.out.println(consulta);
              cache.put(consulta, resultados);
        }else{
-          // consulta = consulta.replaceAll("\\W+", "");
+          consulta = consulta.replaceAll("\\W+", "");
+          consulta = consulta.toLowerCase();  
           resultados = busqueda.containsCache(cache, consulta);
-          
+    
           if(resultados == null){
             resultados =  busqueda.compara(docs, consulta);
-            //consulta = consulta.replaceAll("\\W+", "");
-             System.out.println(consulta);
+            consulta = consulta.replaceAll("\\W+", "");
+            consulta = consulta.toLowerCase();
+            System.out.println(consulta);
             cache.put(consulta, resultados);
             resultadosFinales. setStringFinales(resultados);
           }else{
