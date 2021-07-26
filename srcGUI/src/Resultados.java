@@ -52,11 +52,11 @@ public class Resultados extends javax.swing.JFrame {
 
         texto.setBackground(new java.awt.Color(204, 204, 255));
         texto.setColumns(20);
-        texto.setForeground(new java.awt.Color(102, 102, 255));
+        texto.setForeground(new java.awt.Color(0, 0, 102));
         texto.setRows(5);
         jScrollPane1.setViewportView(texto);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 360, 130));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 400, 130));
 
         jButton1.setBackground(new java.awt.Color(153, 153, 255));
         jButton1.setFont(new java.awt.Font("Cambria", 0, 24)); // NOI18N

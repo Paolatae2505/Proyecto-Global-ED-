@@ -10,7 +10,7 @@ import java.util.*;
  * @author victoria
  */
 public class Historial extends javax.swing.JFrame {
-    public List<String> consultas = new ArrayList<>();
+    public static List<String> consultas = new ArrayList<>();
     public String consulta;
     /**
      * Creates new form Historial

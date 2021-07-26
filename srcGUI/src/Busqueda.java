@@ -30,7 +30,6 @@ public class Busqueda {
         double porcentaje;
         for (File doc : docs) {
             porcentaje = (j / r) * 100;
-            System.out.println("Hola");
             sim = new TFIDF().sim(docs, consulta, doc);
             System.out.printf("----- Progreso : %.2f", porcentaje);
             System.out.println("%-----");
