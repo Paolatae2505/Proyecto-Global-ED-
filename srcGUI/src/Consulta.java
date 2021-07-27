@@ -23,7 +23,7 @@ public class Consulta extends javax.swing.JFrame {
      private static Map<String, List<String>> cache = new HashMap<>();;
      private Resultados resultadosFinales = new Resultados();
      private int leng;
-
+     private int porcentaje;
     /**
      * Creates new form Consulta
      */
@@ -46,7 +46,7 @@ public class Consulta extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         areadeTexto = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
-        progressBar = new javax.swing.JProgressBar();
+        barra = new javax.swing.JProgressBar();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,7 +70,9 @@ public class Consulta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 120, -1));
-        getContentPane().add(progressBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 490, 40));
+
+        barra.setStringPainted(true);
+        getContentPane().add(barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 490, 40));
 
         jButton2.setText("Resulatdos");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -120,7 +122,13 @@ public class Consulta extends javax.swing.JFrame {
         this.cache = cache;
     }
     
+    public void setPorcentaje(int porcentje){
+        this.porcentaje = porcentaje;
+    }
     
+    public void proceso(){
+        barra.setValue(porcentaje);
+    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String aux = "";
@@ -225,10 +233,10 @@ public class Consulta extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areadeTexto;
+    private javax.swing.JProgressBar barra;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JProgressBar progressBar;
     // End of variables declaration//GEN-END:variables
 }
