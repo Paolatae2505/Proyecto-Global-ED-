@@ -18,18 +18,7 @@ public class Busqueda extends JFrame {
      * @param consulta Palabra a buscar.
      * @return Lista con los 10 archivos que mejor coinciden con la consulta.
      */
-    public List<String> compara(List<File> docs, String consulta){
-        // create a frame
-        /*JFrame f = new javax.swing.JFrame("ProgressBar");
-        JPanel p = new javax.swing.JPanel();
-        JProgressBar b = new javax.swing.JProgressBar();
-        b.setValue(0);
-        b.setStringPainted(true);
-        p.add(b);
-        f.add(p);
-        f.setSize(500, 150);
-        f.setVisible(true);*/
-        
+    public List<String> compara(List<File> docs, String consulta){    
         BarraProgreso barra = new BarraProgreso();
         barra.setVisible(true);
         List<String> resultado = new ArrayList<>();
@@ -37,9 +26,8 @@ public class Busqueda extends JFrame {
         Map<String, Double> simPorDoc = new Hashtable<>();
         int j = 1;
         double r = docs.size();
-
-        double porcentaje;
         int por;
+            double porcentaje;
         for (File doc : docs) {
             porcentaje = ((j / r) * 100);
             sim = new TFIDF().sim(docs, consulta, doc);
@@ -49,32 +37,6 @@ public class Busqueda extends JFrame {
             if (sim != 0) {
                 simPorDoc.put(doc.getName(), sim);
             }
-
-     porcentaje=0;
-        //b.setValue((int) porcentaje);
-        barra.llenar(porcentaje);
-        try{
-            for (File doc : docs) {
-                porcentaje = (j / r) * 100;
-                barra.llenar(porcentaje);
-                // fill the menu bar
-                //b.setValue((int)porcentaje);
-                Thread.sleep(1000);
-                sim = new TFIDF().sim(docs, consulta, doc);
-                System.out.printf("----- Progreso : %.2f", porcentaje);
-                System.out.println("%-----");
-                if (sim != 0) {
-                    simPorDoc.put(doc.getName(), sim);
-                }
-
-            j++;
-            } 
-        }catch (Exception e) {
-        }
-        if (porcentaje >= 100)
-            {
-               barra.dispose();
-            } 
         if (simPorDoc.isEmpty()) {
             resultado.add("No hay coincidencias.");
             System.out.println("no esta bien");
@@ -94,6 +56,7 @@ public class Busqueda extends JFrame {
         }
         return resultado;
     }
+    
     
      
     /**
