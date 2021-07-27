@@ -25,18 +25,26 @@ public class Historial extends javax.swing.JFrame {
         imprimeHistorial();
     }
     
-      public void addConsulta(String consulta){
+    public void addConsulta(String consulta){
+        for(String c : consultas){
+                if(c == consulta){
+                    consultas.remove(c);
+                    break;
+                }
+        }
         consultas.add(0, consulta);
     }
     
     public  void imprimeHistorial(){
         String t = "";
-        if(!consultas.isEmpty()){
+        if(consultas.isEmpty()){
+            areaTexto.setText("No has realizado ninguna búsqueda.");
+        } else {
             for(String c : consultas){
-                t+= t + "\n" + c;
+                t+= c+ "\n";
             }
-        } else t = "No has realizado ninguna búsqueda.";
-        areaTexto.setText(t);
+          areaTexto.setText(t);
+        }
     }
 
     /**
