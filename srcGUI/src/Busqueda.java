@@ -19,29 +19,38 @@ public class Busqueda extends JFrame {
      * @return Lista con los 10 archivos que mejor coinciden con la consulta.
      */
     public List<String> compara(List<File> docs, String consulta){    
-        BarraProgreso barra = new BarraProgreso();
+         BarraProgreso barra = new BarraProgreso();
         barra.setVisible(true);
         List<String> resultado = new ArrayList<>();
         double sim;
         Map<String, Double> simPorDoc = new Hashtable<>();
         int j = 1;
         double r = docs.size();
-        int por;
-            double porcentaje;
-        for (File doc : docs) {
-            porcentaje = ((j / r) * 100);
-            sim = new TFIDF().sim(docs, consulta, doc);
-            por = (int) porcentaje;
-            System.out.printf("----- Progreso : %.2f", porcentaje);
-            System.out.println("%-----");
-            if (sim != 0) {
-                simPorDoc.put(doc.getName(), sim);
-            }
+        double porcentaje=0;
+        barra.llenar(porcentaje);
+        try{
+            for (File doc : docs) {
+                porcentaje = (j / r) * 100;
+                barra.llenar(porcentaje);
+                Thread.sleep(1000);
+                sim = new TFIDF().sim(docs, consulta, doc);
+                System.out.printf("----- Progreso : %.2f", porcentaje);
+                System.out.println("%-----");
+                if (sim != 0) {
+                    simPorDoc.put(doc.getName(), sim);
+                }
+            j++;
+            } 
+        }catch (Exception e) {
+        }
+        if (porcentaje >= 100)
+            {
+               barra.dispose();
+            } 
         if (simPorDoc.isEmpty()) {
             resultado.add("No hay coincidencias.");
             System.out.println("no esta bien");
         } else {
-            //Regresar los valores más altos de sim en el árbol (max 10)
             Set<Entry<String, Double>> entradas = simPorDoc.entrySet();
             List<Entry<String, Double>> list = new ArrayList<>(entradas);
             list.sort(Entry.<String, Double>comparingByValue().reversed());
