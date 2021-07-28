@@ -70,7 +70,9 @@ public class Consulta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 120, -1));
-        getContentPane().add(progressBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 490, 40));
+
+        progressBar.setStringPainted(true);
+        getContentPane().add(progressBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 280, 30));
 
         jButton2.setText("Resulatdos");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -147,7 +149,7 @@ public class Consulta extends javax.swing.JFrame {
         new Historial().addConsulta(consulta);
         
        if(cache.isEmpty()){
-              resultados = busqueda.compara(docs,consulta, barra);
+              resultados = busqueda.compara(docs,consulta, progressBar);
               resultadosFinales.setStringFinales(resultados); 
               consulta = consulta.replaceAll("\\W+", "");
               consulta = consulta.toLowerCase();
@@ -159,7 +161,7 @@ public class Consulta extends javax.swing.JFrame {
           resultados = busqueda.containsCache(cache, consulta);
     
           if(resultados == null){
-            resultados =  busqueda.compara(docs,consulta, barra);
+            resultados =  busqueda.compara(docs,consulta, progressBar);
             consulta = consulta.replaceAll("\\W+", "");
             consulta = consulta.toLowerCase();
             System.out.println(consulta);

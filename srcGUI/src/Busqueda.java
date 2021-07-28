@@ -18,7 +18,7 @@ public class Busqueda extends JFrame {
      * @param consulta Palabra a buscar.
      * @return Lista con los 10 archivos que mejor coinciden con la consulta.
      */
-    public List<String> compara(List<File> docs, String consulta, BarraProgreso barra){
+    public List<String> compara(List<File> docs, String consulta, JProgressBar barra){
         barra.setVisible(true);
         List<String> resultado = new ArrayList<>();
         double sim;
@@ -26,11 +26,11 @@ public class Busqueda extends JFrame {
         double j = 1;
         double r = docs.size();
         int porcentaje=0; //si no es int, marca error, si es int, no carga
-        barra.llenar(0);
+        barra.setValue(0);
         try{
             for (File doc : docs) {
                 porcentaje = (int) ((j / r) * 100);
-                barra.llenar((int)porcentaje);
+                barra.setValue(porcentaje);
                 Thread.sleep(1000);
                 sim = new TFIDF().sim(docs, consulta, doc);
                 System.out.printf("----- Progreso : %.2f", porcentaje);
@@ -44,7 +44,7 @@ public class Busqueda extends JFrame {
         }
         if (porcentaje >= 100)
             {
-               barra.dispose();
+               barra.setVisible(false);
             } 
         if (simPorDoc.isEmpty()) {
             resultado.add("No hay coincidencias.");
