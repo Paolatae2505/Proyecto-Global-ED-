@@ -25,23 +25,20 @@ public class Busqueda extends JFrame {
         Map<String, Double> simPorDoc = new Hashtable<>();
         double j = 1;
         double r = docs.size();
-        int porcentaje=0; //si no es int, marca error, si es int, no carga
+        double porcentaje=0; //si no es int, marca error, si es int, no carga
         barra.setValue(0);
-        try{
             for (File doc : docs) {
                 porcentaje = (int) ((j / r) * 100);
-                barra.setValue(porcentaje);
-                Thread.sleep(1000);
+                barra.setValue((int)porcentaje);
                 sim = new TFIDF().sim(docs, consulta, doc);
-                System.out.printf("----- Progreso : %.2f", porcentaje);
+                System.out.printf("----- Progreso :", porcentaje);
                 System.out.println("%-----");
                 if (sim != 0) {
                     simPorDoc.put(doc.getName(), sim);
                 }
             j++;
             } 
-        }catch (Exception e) {
-        }
+       
         if (porcentaje >= 100)
             {
                barra.setVisible(false);

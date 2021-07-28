@@ -62,8 +62,6 @@ public class TFIDF{
         }catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        System.out.println("LOS TEERMISNO");
-        System.out.println(cadenasPalabras.isEmpty());
          return cadenasPalabras;
     }
 
@@ -137,7 +135,6 @@ public class TFIDF{
 
     private double auxDIVISOR(List<File> d,File doc){
         List<String> listaCadenas = palabras(doc);
-        System.out.println(listaCadenas.isEmpty());
         double tf = 0;
         double idf = 0;
         double divisor = 0;
@@ -172,7 +169,6 @@ public class TFIDF{
             tfIdf = TF_IDF(tf, idf);
             dividendo = dividendo + tfIdf;
         }
-        System.out.println(divisor);
         if((divisor == 0 ) || (dividendo == 0) || (divisor == 0 ) && (dividendo == 0))
         return 0;
 
