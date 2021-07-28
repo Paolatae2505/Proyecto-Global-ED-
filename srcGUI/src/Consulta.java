@@ -123,6 +123,7 @@ public class Consulta extends javax.swing.JFrame {
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        BarraProgreso barra = new BarraProgreso(); //added
         String aux = "";
         int longitud = 0;
         consulta = areadeTexto.getText();
@@ -146,7 +147,7 @@ public class Consulta extends javax.swing.JFrame {
         new Historial().addConsulta(consulta);
         
        if(cache.isEmpty()){
-              resultados = busqueda.compara(docs,consulta);
+              resultados = busqueda.compara(docs,consulta, barra);
               resultadosFinales.setStringFinales(resultados); 
               consulta = consulta.replaceAll("\\W+", "");
               consulta = consulta.toLowerCase();
@@ -158,7 +159,7 @@ public class Consulta extends javax.swing.JFrame {
           resultados = busqueda.containsCache(cache, consulta);
     
           if(resultados == null){
-            resultados =  busqueda.compara(docs, consulta);
+            resultados =  busqueda.compara(docs,consulta, barra);
             consulta = consulta.replaceAll("\\W+", "");
             consulta = consulta.toLowerCase();
             System.out.println(consulta);

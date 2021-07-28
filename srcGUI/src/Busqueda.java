@@ -18,20 +18,19 @@ public class Busqueda extends JFrame {
      * @param consulta Palabra a buscar.
      * @return Lista con los 10 archivos que mejor coinciden con la consulta.
      */
-    public List<String> compara(List<File> docs, String consulta){    
-         BarraProgreso barra = new BarraProgreso();
+    public List<String> compara(List<File> docs, String consulta, BarraProgreso barra){
         barra.setVisible(true);
         List<String> resultado = new ArrayList<>();
         double sim;
         Map<String, Double> simPorDoc = new Hashtable<>();
-        int j = 1;
+        double j = 1;
         double r = docs.size();
-        double porcentaje=0;
-        barra.llenar(porcentaje);
+        int porcentaje=0; //si no es int, marca error, si es int, no carga
+        barra.llenar(0);
         try{
             for (File doc : docs) {
-                porcentaje = (j / r) * 100;
-                barra.llenar(porcentaje);
+                porcentaje = (int) ((j / r) * 100);
+                barra.llenar((int)porcentaje);
                 Thread.sleep(1000);
                 sim = new TFIDF().sim(docs, consulta, doc);
                 System.out.printf("----- Progreso : %.2f", porcentaje);

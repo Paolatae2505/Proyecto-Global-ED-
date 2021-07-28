@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.List;
+import java.util.*;
 /**
  * Implementacion Clase para calcular el TF e IDF
  * @author Baron Herrera Victoria
@@ -12,6 +12,7 @@ import java.util.List;
  */
 public class TFIDF{
     // Metodos
+   // private List<String> cadenas = new ArrayList<>();
     /**
      * Busca la frenceuncia de la palabra en un documento
      * @param termino --- Termino a busar en el documento 
@@ -28,7 +29,7 @@ public class TFIDF{
         while ((s = br.readLine()) != null) {
             words = s.split(" ");
             for (String word : words) {
-                word = word.replaceAll("\\W+", "");// Quita los caracteres especiales
+               // word = word.replaceAll("\\W+", "");// Quita los caracteres especiales
                 if (word.equalsIgnoreCase(termino)){ // Quita las minusculas y mayusculas
                     count++;
                 }
@@ -36,6 +37,34 @@ public class TFIDF{
         }
         fr.close();
         return count;
+    }
+    /**
+     * Todas las palabras del documento
+     * @param doc
+     */
+    public List<String> palabras(File doc){
+        List <String> cadenasPalabras = new ArrayList<>();
+        String[] words = null;  
+         String s = "";
+        try {
+            FileReader fr = new FileReader(doc);  
+            BufferedReader br = new BufferedReader(fr);
+            while ((s = br.readLine()) != null) {
+                words = s.split(" ");
+                for (String word : words) {
+                    word = word.replaceAll("\\W+", "");// Quita los caracteres especiales
+                    cadenasPalabras.add(word);    
+                }
+            }
+            fr.close();
+        }catch (IOException exp) {
+            System.out.println(exp.getMessage());
+        }catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        System.out.println("LOS TEERMISNO");
+        System.out.println(cadenasPalabras.isEmpty());
+         return cadenasPalabras;
     }
 
     /**
@@ -106,6 +135,22 @@ public class TFIDF{
         return tf * idf;
     }
 
+    private double auxDIVISOR(List<File> d,File doc){
+        List<String> listaCadenas = palabras(doc);
+        System.out.println(listaCadenas.isEmpty());
+        double tf = 0;
+        double idf = 0;
+        double divisor = 0;
+        double tfIdf = 0;
+        for(String word : listaCadenas){
+            tf = TF(word, doc);
+            idf = IDF(word, d);
+            tfIdf = TF_IDF(tf, idf);
+            divisor = divisor + Math.pow(tfIdf,2);
+        }
+        return divisor;
+    }
+
     /** 
      * Calcula el Sim de una palabra en un documento 
      * @param d --- Lista de documentos
@@ -119,19 +164,18 @@ public class TFIDF{
         double idf = 0;
         double tfIdf = 0;
         double dividendo = 0;
-        double divisor = 0;
+        double divisor = auxDIVISOR(d,doc);
         double raiz = 0;
         for (String termino : terminos) {
             tf = TF(termino, doc);
             idf = IDF(termino, d);
-            if (idf != 0 && tf != 0 || idf == 0 && tf != 0) {
-                tfIdf = TF_IDF(tf, idf);
-                dividendo = dividendo + tfIdf;
-                divisor = divisor + Math.pow(tfIdf,2);
-            } else {
-                return 0;
-            }
+            tfIdf = TF_IDF(tf, idf);
+            dividendo = dividendo + tfIdf;
         }
+        System.out.println(divisor);
+        if((divisor == 0 ) || (dividendo == 0) || (divisor == 0 ) && (dividendo == 0))
+        return 0;
+
         raiz = Math.sqrt(divisor);
         return ((dividendo) / (raiz));
     }

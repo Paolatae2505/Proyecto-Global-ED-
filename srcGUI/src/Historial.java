@@ -29,7 +29,6 @@ public class Historial extends javax.swing.JFrame {
         for(String c : consultas){
                 if(c == consulta){
                     consultas.remove(c);
-                    break;
                 }
         }
         consultas.add(0, consulta);

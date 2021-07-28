@@ -92,6 +92,7 @@ public class BarraProgreso extends javax.swing.JFrame {
                 new BarraProgreso().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
